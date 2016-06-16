@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfPractice"
         mc:Ignorable="d"
-        Title="StyleExample" Height="300" Width="300">
+        Title="StyleExample" Height="1300" Width="300">
     <Grid>
         <Grid.Resources>
             <Style x:Key="{x:Type Button}">
                 <Setter Property="TextElement.FontFamily" Value="Segoe Script" />
                 <Setter Property="TextElement.FontSize" Value="30" />
+            </Style>
+            <Style x:Key="myStyle">
+                <Setter Property="TextElement.FontFamily" Value="Palatino Linotype" />
+                <Setter Property="TextElement.FontSize" Value="65" />
             </Style>
         </Grid.Resources>
 
@@ -20,7 +24,7 @@
             <Button Content="Click me" />
             <Button Content="Click me" />
 
-            <ListBox ItemsSource="{x:Static Fonts.SystemFontFamilies}">
+            <ListBox ItemsSource="{x:Static Fonts.SystemFontFamilies}" Height="50">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock x:Name="templateText" Text="{Binding}" FontFamily="{Binding}" FontSize="30" />
@@ -33,8 +37,13 @@
                     </Style>
                 </ListBox.ItemContainerStyle>
             </ListBox>
-            
-            
+            <StackPanel Style="{StaticResource myStyle}">
+                <TextBox >
+                    Hello</TextBox>
+                <TextBox >
+                    How Are you!</TextBox>
+            </StackPanel>
+
         </StackPanel>
     </Grid>
 </Window>
