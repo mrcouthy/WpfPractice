@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfPractice"
         mc:Ignorable="d"
         Title="Window1" Height="300" Width="300">
-    <Grid>
+    <StackPanel>
         <local:TargetControl Width="100" Height="100">
             <local:TargetControl.Template>
                 <ControlTemplate TargetType="local:TargetControl">
@@ -16,5 +16,9 @@
                 </ControlTemplate>
             </local:TargetControl.Template>
         </local:TargetControl>
-    </Grid>
+
+        <local:TargetControl Width="100" Height="100">
+            
+        </local:TargetControl>
+    </StackPanel>
 </Window>
