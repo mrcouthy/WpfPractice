@@ -16,8 +16,25 @@
 
         <StackPanel>
             <Button Content="Click me" />
+            <TextBox>Apple</TextBox>
             <Button Content="Click me" />
             <Button Content="Click me" />
+
+            <ListBox ItemsSource="{x:Static Fonts.SystemFontFamilies}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock x:Name="templateText" Text="{Binding}" FontFamily="{Binding}" FontSize="30" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Background" Value="Red" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+            
+            
         </StackPanel>
     </Grid>
 </Window>
