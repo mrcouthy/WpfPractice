@@ -36,6 +36,16 @@ namespace WpfPractice.Navigate
         {
             get { return this[CurrnetIndex]; }
         }
+
+        public T First
+        {
+            get {_currentIndex=0; return this[CurrnetIndex]; }
+        }
+
+        public T Last
+        {
+            get { _currentIndex = Count - 1; return this[CurrnetIndex]; }
+        }
     }
 
     [TestClass]
@@ -66,6 +76,9 @@ namespace WpfPractice.Navigate
             Assert.AreEqual(n.MovePrevious, "A");
             Assert.AreEqual(n.MovePrevious, "A");
             Assert.AreEqual(n.MovePrevious, "A");
+
+            Assert.AreEqual(n.Last, "D");
+            Assert.AreEqual(n.First, "A");
 
             Assert.AreEqual(n.Count, 4);
         }
