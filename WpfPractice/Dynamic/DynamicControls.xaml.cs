@@ -25,15 +25,7 @@ namespace WpfPractice.Dynamic
             InitializeComponent();
         }
 
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            Person obj = new Person();
-            obj.FirstName = "sujeet";
-            CreateControls(obj);
-        }
-
-
-        private TextBlock CreateTextBlock(string text, int row, int column)
+       private TextBlock CreateTextBlock(string text, int row, int column)
         {
             string[] aa = BreakUpperCB(text);
             string prop = "";
