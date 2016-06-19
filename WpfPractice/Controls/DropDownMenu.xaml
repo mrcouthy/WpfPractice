@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfPractice.Controls.DropDownMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPractice.Controls"
+        mc:Ignorable="d"
+        Title="DropDownMenu" Height="1300" Width="1300">
+    <Grid>
+        <Menu>
+        <MenuItem   x:Name="AddPresetButton">
+            <MenuItem.Icon>
+                <Image Height="20" Source="/WpfPractice;component/image.png"/>
+            </MenuItem.Icon>
+            <MenuItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Add Preset"/>
+                    <Image Source="/WpfPractice;component/image.png"
+                   Height="10" Margin="2,0,0,0"/>
+                </StackPanel>
+            </MenuItem.Header>
+            <MenuItem.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Add 1"/>
+                    <MenuItem Header="Add 2"/>
+                    <MenuItem Header="Add 3"/>
+                </ContextMenu>
+            </MenuItem.ContextMenu>
+        </MenuItem>
+        </Menu>
+        
+        
+    </Grid>
+</Window>
