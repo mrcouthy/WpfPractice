@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfPractice.MainWindow"
+﻿<Window x:Class="WpfPractice.UserControls"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:WpfPractice"
         xmlns:myns="clr-namespace:WpfPractice"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="UserControls" Height="300" Width="300">
     <StackPanel>
-        <Button Click="Button_Click_UserControls">UC</Button>
-        <Button Click="Button_Click_GridwithCheckBox">Grid</Button>
+        <myns:MyGrid/>
+        <myns:MyGrid/>
     </StackPanel>
 </Window>

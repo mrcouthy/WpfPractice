@@ -60,6 +60,9 @@
       <DependentUpon>DynamicControls.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dynamic\Person.cs" />
+    <Compile Include="Grids\GridWithCheckBox.xaml.cs">
+      <DependentUpon>GridWithCheckBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Navigate\NavigateWindow.xaml.cs">
       <DependentUpon>NavigateWindow.xaml</DependentUpon>
     </Compile>
@@ -77,10 +80,17 @@
     <Compile Include="ThreadUIExample.xaml.cs">
       <DependentUpon>ThreadUIExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls.xaml.cs">
+      <DependentUpon>UserControls.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Page Include="Dynamic\DynamicControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Grids\GridWithCheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,6 +131,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ThreadUIExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

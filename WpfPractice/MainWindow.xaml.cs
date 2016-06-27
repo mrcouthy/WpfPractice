@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfPractice.Grids;
 
 namespace WpfPractice
 {
@@ -23,6 +24,18 @@ namespace WpfPractice
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click_UserControls(object sender, RoutedEventArgs e)
+        {
+            var uc = new UserControls();
+            uc.Show();
+        }
+
+     
+        private void Button_Click_GridwithCheckBox(object sender, RoutedEventArgs e)
+        {
+            new GridWithCheckBox().Show();
         }
     }
 }
