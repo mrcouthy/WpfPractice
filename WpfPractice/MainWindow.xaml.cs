@@ -35,7 +35,12 @@ namespace WpfPractice
      
         private void Button_Click_GridwithCheckBox(object sender, RoutedEventArgs e)
         {
-            new GridWithCheckBox().Show();
+           
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            new TestGrid().Show();
         }
     }
 }

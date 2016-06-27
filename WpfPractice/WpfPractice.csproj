@@ -38,6 +38,7 @@
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,9 +64,13 @@
       <DependentUpon>DynamicControls.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dynamic\Person.cs" />
-    <Compile Include="Grids\GridWithCheckBox.xaml.cs">
-      <DependentUpon>GridWithCheckBox.xaml</DependentUpon>
+    <Compile Include="Grids\TestGrid.xaml.cs">
+      <DependentUpon>TestGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Grids\UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\VisualTreeHelper.cs" />
     <Compile Include="Navigate\NavigateWindow.xaml.cs">
       <DependentUpon>NavigateWindow.xaml</DependentUpon>
     </Compile>
@@ -97,7 +102,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Grids\GridWithCheckBox.xaml">
+    <Page Include="Grids\TestGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Grids\UserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfPractice"
         xmlns:myns="clr-namespace:WpfPractice"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
     <StackPanel>
         <Button Click="Button_Click_UserControls">UC</Button>
         <Button Click="Button_Click_GridwithCheckBox">Grid</Button>

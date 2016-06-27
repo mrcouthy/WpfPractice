@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfPractice.Grids
 {
     /// <summary>
-    /// Interaction logic for GridWithCheckBox.xaml
+    /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class GridWithCheckBox : Window
+    public partial class UserControl1 : UserControl
     {
-        public GridWithCheckBox()
+        public UserControl1()
         {
             InitializeComponent();
         }
