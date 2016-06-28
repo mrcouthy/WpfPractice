@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,33 +10,39 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+
+
 namespace WpfPractice.Grids
 {
     /// <summary>
-    /// Interaction logic for TestGrid.xaml
+    /// Interaction logic for ExtendedGridControl.xaml
     /// </summary>
-    public partial class TestGrid : Window
+    public partial class ExtendedGridControl : UserControl
     {
-        List<UserWithSelect> users = new List<UserWithSelect>();
-        public TestGrid()
+        public ExtendedGridControl()
         {
             InitializeComponent();
-            var a = new UserWithSelect() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) };
-            a.PropertyChanged += A_PropertyChanged;
-            var b = new UserWithSelect() { Id = 1, Name = "Japan Doe", Birthday = new DateTime(1971, 7, 8) };
-            b.PropertyChanged += A_PropertyChanged;
-            var c = new UserWithSelect() { Id = 1, Name = "Amrika Doe", Birthday = new DateTime(1971, 7, 2) };
-            c.PropertyChanged += A_PropertyChanged;
-            users.Add(b);
-            users.Add(c);
-            users.Add(a);
-            ucCon.dgMain.ItemsSource = users;
-            dgTest.ItemsSource = users;
-           
+
+        }
+
+        List<UserWithSelecti> _Datas = new List<UserWithSelecti>();
+
+        public List<UserWithSelecti> Datas
+        {
+            get { return _Datas; }
+            set
+            {
+                _Datas = value;
+                foreach (var item in _Datas)
+                {
+                    item.PropertyChanged += A_PropertyChanged;
+                }
+                ExtGrid.ItemsSource = _Datas;
+            }
         }
         long i = 0;
         bool fromProgram = false;
@@ -46,9 +50,9 @@ namespace WpfPractice.Grids
         {
             Debug.Print((++i).ToString());
             fromProgram = true;
-            if (users.Any(u => u.IsSelected))
+            if (Datas.Any(u => u.IsSelected))
             {
-                if (users.Any(u=>!u.IsSelected))
+                if (Datas.Any(u => !u.IsSelected))
                 {
                     HeaderCheckBox.IsChecked = null;
                 }
@@ -68,18 +72,18 @@ namespace WpfPractice.Grids
         {
             if (!fromProgram)
             {
-                foreach (var item in users)
+                foreach (var item in Datas)
                 {
                     item.IsSelected = true;
                 }
             }
         }
-        
+
         private void CheckBox_UnChecked(object sender, RoutedEventArgs e)
         {
             if (!fromProgram)
             {
-                foreach (var item in users)
+                foreach (var item in Datas)
                 {
                     item.IsSelected = false;
                 }
@@ -87,14 +91,14 @@ namespace WpfPractice.Grids
         }
     }
 
-    public class User
+    public class Useri
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
     }
 
-    public class UserWithSelect : User, INotifyPropertyChanged
+    public class UserWithSelecti : Useri, INotifyPropertyChanged
     {
         //caviyar
         //DataGridCheckBoxColumn IsReadOnly="False" 
