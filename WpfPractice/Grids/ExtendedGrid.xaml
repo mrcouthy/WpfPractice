@@ -7,7 +7,8 @@
         
         mc:Ignorable="d"
         Title="ExtendedGrid"  Height="300" Width="300">
-    <Grid>
+    <StackPanel>
         <local:ExtendedGridControl x:Name="Apple"/>
-    </Grid>
+        <Button Name="Getit" Click="Getit_Click">Click</Button>
+    </StackPanel>
 </Window>

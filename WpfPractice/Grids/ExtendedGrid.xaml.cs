@@ -41,7 +41,10 @@ namespace WpfPractice.Grids
            
         }
 
-       
+        private void Getit_Click(object sender, RoutedEventArgs e)
+        {
+         var z=   Apple.GetSelected();
+        }
     }
 
     public class Useri: UserWithSelecti

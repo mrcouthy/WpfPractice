@@ -68,6 +68,14 @@ namespace WpfPractice.Grids
             fromProgram = false;
         }
 
+        internal List<UserWithSelecti> GetSelected()
+        {
+            var x = (from UserWithSelecti us in Datas
+                     where us.IsSelected
+                     select us).ToList();
+            return x;
+        }
+
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             if (!fromProgram)
@@ -95,6 +103,7 @@ namespace WpfPractice.Grids
 
     public class UserWithSelecti :  INotifyPropertyChanged
     {
+        
         //caviyar
         //DataGridCheckBoxColumn IsReadOnly="False" 
         bool _isSelected;
