@@ -70,6 +70,7 @@
     <Compile Include="Grids\ExtendedGridControl.xaml.cs">
       <DependentUpon>ExtendedGridControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Grids\GridHelper.cs" />
     <Compile Include="Grids\TestGrid.xaml.cs">
       <DependentUpon>TestGrid.xaml</DependentUpon>
     </Compile>

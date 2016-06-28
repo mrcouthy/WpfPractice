@@ -20,15 +20,9 @@ namespace WpfPractice.Grids
         public ExtendedGrid()
         {
             InitializeComponent();
-            DataGridTextColumn textColumn = new DataGridTextColumn();
-            textColumn.Header = "Name";
-            textColumn.Binding = new Binding("Name");
+            var textColumn = ColumnsFactory.GetTextColumn("Name", "Name");
             Apple.ExtGrid.Columns.Add(textColumn);
-
-            DataGridTextColumn bdayColumn = new DataGridTextColumn();
-            bdayColumn.Header = "BirthDay";
-            bdayColumn.Binding = new Binding("Birthday");
-            Apple.ExtGrid.Columns.Add(bdayColumn);
+            Apple.ExtGrid.Columns.Add(ColumnsFactory.GetTextColumn("Birthday", "Birthday"));
 
             var a = new Useri() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) };
             var b = new Useri() { Id = 1, Name = "Japan Doe", Birthday = new DateTime(1971, 7, 8) };
@@ -46,6 +40,9 @@ namespace WpfPractice.Grids
          var z=   Apple.GetSelected();
         }
     }
+
+
+    
 
     public class Useri: UserWithSelecti
     {
