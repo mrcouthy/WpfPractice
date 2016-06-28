@@ -30,9 +30,9 @@ namespace WpfPractice.Grids
             bdayColumn.Binding = new Binding("Birthday");
             Apple.ExtGrid.Columns.Add(bdayColumn);
 
-            var a = new UserWithSelecti() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) };
-            var b = new UserWithSelecti() { Id = 1, Name = "Japan Doe", Birthday = new DateTime(1971, 7, 8) };
-            var c = new UserWithSelecti() { Id = 1, Name = "Amrika Doe", Birthday = new DateTime(1971, 7, 2) };
+            var a = new Useri() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) };
+            var b = new Useri() { Id = 1, Name = "Japan Doe", Birthday = new DateTime(1971, 7, 8) };
+            var c = new Useri() { Id = 1, Name = "Amrika Doe", Birthday = new DateTime(1971, 7, 2) };
            
             users.Add(b);
             users.Add(c);
@@ -44,7 +44,7 @@ namespace WpfPractice.Grids
        
     }
 
-    public class Useri
+    public class Useri: UserWithSelecti
     {
         public int Id { get; set; }
         public string Name { get; set; }

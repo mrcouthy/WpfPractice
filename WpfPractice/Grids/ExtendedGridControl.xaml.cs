@@ -93,7 +93,7 @@ namespace WpfPractice.Grids
 
    
 
-    public class UserWithSelecti : Useri, INotifyPropertyChanged
+    public class UserWithSelecti :  INotifyPropertyChanged
     {
         //caviyar
         //DataGridCheckBoxColumn IsReadOnly="False" 
