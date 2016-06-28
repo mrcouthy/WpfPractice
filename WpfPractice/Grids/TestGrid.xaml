@@ -17,7 +17,7 @@
 
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.Header>
-                        <CheckBox Name="HeaderCheckBox" IsChecked="{Binding SelectAll}" Checked="CheckBox_Checked" Unchecked="CheckBox_UnChecked" IsThreeState="True"></CheckBox>
+                        <CheckBox Name="HeaderCheckBox" IsChecked="{Binding SelectAll}" Checked="CheckBox_Checked" Unchecked="CheckBox_UnChecked"  ></CheckBox>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate >
                         <DataTemplate>

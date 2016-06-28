@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,59 +22,96 @@ namespace WpfPractice.Grids
     /// </summary>
     public partial class TestGrid : Window
     {
-        ObservableCollection<UserWithSelect> users = new ObservableCollection<UserWithSelect>();
+        List<UserWithSelect> users = new List<UserWithSelect>();
         public TestGrid()
         {
             InitializeComponent();
-            users.Add(new UserWithSelect() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) });
-            users.Add(new UserWithSelect() { Id = 2, Name = "Jane Doe", Birthday = new DateTime(1974, 1, 17) });
-            users.Add(new UserWithSelect() { Id = 3, Name = "Sammy Doe", Birthday = new DateTime(1991, 9, 2), IsSelected = true });
+            var a = new UserWithSelect() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) };
+            a.PropertyChanged += A_PropertyChanged;
+            var b = new UserWithSelect() { Id = 1, Name = "Japan Doe", Birthday = new DateTime(1971, 7, 8) };
+            b.PropertyChanged += A_PropertyChanged;
+            var c = new UserWithSelect() { Id = 1, Name = "Amrika Doe", Birthday = new DateTime(1971, 7, 2) };
+            c.PropertyChanged += A_PropertyChanged;
+            users.Add(b);
+            users.Add(c);
+            users.Add(a);
             ucCon.dgMain.ItemsSource = users;
             dgTest.ItemsSource = users;
+           
         }
-
-        public class User
+        long i = 0;
+        bool fromProgram = false;
+        private void A_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            public int Id { get; set; }
-            public string Name { get; set; }
-            public DateTime Birthday { get; set; }
-        }
-        public class UserWithSelect: User,INotifyPropertyChanged
-        {
-            //caviyar
-            //DataGridCheckBoxColumn IsReadOnly="False" 
-            bool _isSelected;
-            public bool IsSelected
+            Debug.Print((++i).ToString());
+            fromProgram = true;
+            if (users.Any(u => u.IsSelected))
             {
-                get { return _isSelected; }
-                set
+                if (users.Any(u=>!u.IsSelected))
                 {
-                    _isSelected = value;
-                    this.OnPropertyChanged("IsSelected");
+                    HeaderCheckBox.IsChecked = null;
+                }
+                else
+                {
+                    HeaderCheckBox.IsChecked = true;
                 }
             }
-
-            public event PropertyChangedEventHandler PropertyChanged;
-            protected void OnPropertyChanged(string name)
+            else
             {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+                HeaderCheckBox.IsChecked = false;
             }
+            fromProgram = false;
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            foreach (var item in users)
+            if (!fromProgram)
             {
-                item.IsSelected = true;
+                foreach (var item in users)
+                {
+                    item.IsSelected = true;
+                }
             }
         }
         
         private void CheckBox_UnChecked(object sender, RoutedEventArgs e)
         {
-            foreach (var item in users)
+            if (!fromProgram)
             {
-                item.IsSelected = false;
+                foreach (var item in users)
+                {
+                    item.IsSelected = false;
+                }
             }
+        }
+    }
+
+    public class User
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public DateTime Birthday { get; set; }
+    }
+
+    public class UserWithSelect : User, INotifyPropertyChanged
+    {
+        //caviyar
+        //DataGridCheckBoxColumn IsReadOnly="False" 
+        bool _isSelected;
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set
+            {
+                _isSelected = value;
+                this.OnPropertyChanged("IsSelected");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
