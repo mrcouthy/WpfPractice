@@ -19,7 +19,7 @@ namespace WpfPractice.Grids
         {
             DataGridComboBoxColumn column = new DataGridComboBoxColumn();
             column.Header = HeaderText;
-            // column.Binding = new Binding(Binding);
+
             column.IsReadOnly = true;
             return column;
         }

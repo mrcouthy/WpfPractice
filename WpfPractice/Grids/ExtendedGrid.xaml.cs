@@ -41,9 +41,6 @@ namespace WpfPractice.Grids
         }
     }
 
-
-    
-
     public class Useri: UserWithSelecti
     {
         public int Id { get; set; }
