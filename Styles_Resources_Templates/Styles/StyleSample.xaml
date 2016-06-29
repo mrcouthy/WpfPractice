@@ -25,6 +25,8 @@
     </Window.Resources>
 
     <StackPanel>
+
+        <TextBlock>No key means styles is default(apply to all controls)</TextBlock>
         <Button Content = "Button1" Style = "{StaticResource myButtonStyle}" />
         <Button Content = "Button2" Style = "{StaticResource myButtonStyle}" />
         <Button Content = "Button3" Style="{StaticResource myButtonStyle}" />
