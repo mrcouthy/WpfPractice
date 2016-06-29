@@ -9,7 +9,7 @@
     <Window.Resources>
         <SolidColorBrush x:Key = "formbrushResource" Color = "Aqua" />
     </Window.Resources>
-    <StackPanel>
+    <StackPanel  Background="{StaticResource formBackground}">
         <StackPanel.Resources>
             <SolidColorBrush x:Key = "localbrushResource" Color = "IndianRed" />
         </StackPanel.Resources>
