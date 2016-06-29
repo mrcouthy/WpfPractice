@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Styles_Resources_Templates"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key = "brushResource" Color = "BlanchedAlmond" />
     </Application.Resources>
 </Application>

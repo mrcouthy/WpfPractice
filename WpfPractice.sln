@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfPractice", "WpfPractice\WpfPractice.csproj", "{E0FC0F05-BB3E-41D2-AFCB-B8754BADD9F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Styles_Resources_Templates", "Styles_Resources_Templates\Styles_Resources_Templates.csproj", "{A06E1E98-5084-4268-A313-06B4DE4002C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E0FC0F05-BB3E-41D2-AFCB-B8754BADD9F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0FC0F05-BB3E-41D2-AFCB-B8754BADD9F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0FC0F05-BB3E-41D2-AFCB-B8754BADD9F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A06E1E98-5084-4268-A313-06B4DE4002C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A06E1E98-5084-4268-A313-06B4DE4002C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A06E1E98-5084-4268-A313-06B4DE4002C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A06E1E98-5084-4268-A313-06B4DE4002C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

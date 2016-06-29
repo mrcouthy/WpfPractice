@@ -6,7 +6,19 @@
         xmlns:local="clr-namespace:Styles_Resources_Templates"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+    <Window.Resources>
+        <SolidColorBrush x:Key = "formbrushResource" Color = "Aqua" />
+    </Window.Resources>
+    <StackPanel>
+        <StackPanel.Resources>
+            <SolidColorBrush x:Key = "localbrushResource" Color = "IndianRed" />
+        </StackPanel.Resources>
+        <Button Background="{StaticResource brushResource}" MaxWidth="200">Test Resource</Button>
+        <Button Background="{DynamicResource brushResource}" MaxWidth="200" Click="Button_Click">Test Resource</Button>
+        <Button Background="{DynamicResource formbrushResource}" MaxWidth="200" Click="Button_Click">lcoal Resource</Button>
+
+        <Button Background="{DynamicResource localbrushResource}" MaxWidth="200" Click="Button_Click">lcoal Resource</Button>
+
+        <Button Background="{DynamicResource fileResource}" MaxWidth="200" Click="Button_Click">lcoal Resource</Button>
+    </StackPanel>
 </Window>

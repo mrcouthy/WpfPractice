@@ -24,5 +24,10 @@ namespace Styles_Resources_Templates
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
