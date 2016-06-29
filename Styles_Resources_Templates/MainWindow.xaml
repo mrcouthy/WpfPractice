@@ -19,6 +19,6 @@
 
         <Button Background="{DynamicResource localbrushResource}" MaxWidth="200" Click="Button_Click">lcoal Resource</Button>
 
-        <Button Background="{DynamicResource fileResource}" MaxWidth="200" Click="Button_Click">lcoal Resource</Button>
+        <Button Background="{StaticResource fileResource}" MaxWidth="200" Click="Button_Click">File Resource</Button>
     </StackPanel>
 </Window>
