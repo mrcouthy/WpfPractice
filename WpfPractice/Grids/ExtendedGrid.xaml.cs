@@ -23,7 +23,7 @@ namespace WpfPractice.Grids
             var textColumn = ColumnsFactory.GetTextColumn("Name", "Name");
             Apple.ExtGrid.Columns.Add(textColumn);
             Apple.ExtGrid.Columns.Add(ColumnsFactory.GetTextColumn("Birthday", "Birthday"));
-
+            Apple.ExtGrid.Columns.Add(ColumnsFactory.GetDataImageColumn(Apple,"AAA",""));
             var a = new Useri() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) };
             var b = new Useri() { Id = 1, Name = "Japan Doe", Birthday = new DateTime(1971, 7, 8) };
             var c = new Useri() { Id = 1, Name = "Amrika Doe", Birthday = new DateTime(1971, 7, 2) };

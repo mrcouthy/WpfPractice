@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Data;
- 
+using System.Windows;
 
 namespace WpfPractice.Grids
 {
@@ -29,6 +29,14 @@ namespace WpfPractice.Grids
             DataGridCheckBoxColumn column = new DataGridCheckBoxColumn();
             column.Header = HeaderText;
             column.Binding = new Binding(Binding);
+            column.IsReadOnly = true;
+            return column;
+        }
+
+        public static DataGridTemplateColumn GetDataImageColumn(ExtendedGridControl grid, string HeaderText, string Binding)
+        {
+            DataGridTemplateColumn column = (DataGridTemplateColumn)grid.FindResource("dgt");
+            column.Header = HeaderText;
             column.IsReadOnly = true;
             return column;
         }

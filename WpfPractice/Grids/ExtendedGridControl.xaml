@@ -6,6 +6,16 @@
              xmlns:local="clr-namespace:WpfPractice.Grids"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <DataGridTemplateColumn x:Key="dgt" Header="Column1" Width="SizeToCells">
+            <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                    <!--<Image Source="{Binding Column1}" />-->
+                    <Image x:Name="image" Height="30" Source="/WpfPractice;component/Resources/play.png"/>
+                </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+    </UserControl.Resources>
     <Grid>
         <DataGrid Name="ExtGrid" AutoGenerateColumns="False"  CanUserResizeColumns="True" CanUserAddRows="False" CanUserSortColumns="True" ItemsSource="{Binding}">
             <DataGrid.Resources>
