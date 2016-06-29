@@ -29,7 +29,24 @@
         <Button Content = "Button2" Style = "{StaticResource myButtonStyle}" />
         <Button Content = "Button3" Style="{StaticResource myButtonStyle}" />
         <TextBlock>http://www.tutorialspoint.com/wpf/wpf_styles.htm</TextBlock>
-        <Button Width = "100" Height = "70"
-         Style = "{StaticResource TriggerStyle}" Content = "Trigger"/>
+        <Button Width = "100" Height = "70" Style = "{StaticResource TriggerStyle}" Content = "Trigger"/>
+
+        <CheckBox x:Name = "redColorCheckBox" 
+         Content = "Set red as foreground color" Margin = "20"/>
+        <TextBlock Name = "txtblock" VerticalAlignment = "Center" 
+         Text = "Event Trigger" FontSize = "24" Margin = "20">
+            <TextBlock.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding = "{Binding ElementName = redColorCheckBox, Path = IsChecked}" 
+                     Value = "true">
+                            <Setter Property = "TextBlock.Foreground" Value = "Red"/>
+                            <Setter Property = "TextBlock.Cursor" Value = "Hand" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    
     </StackPanel>
 </Window>
