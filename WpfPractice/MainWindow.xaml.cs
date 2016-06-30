@@ -32,7 +32,7 @@ namespace WpfPractice
             uc.Show();
         }
 
-     
+
         private void Button_Click_GridwithCheckBox(object sender, RoutedEventArgs e)
         {
             new TestGrid().Show();
@@ -41,6 +41,32 @@ namespace WpfPractice
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             new ExtendedGrid().Show();
+        }
+
+        private void StyleExample(object sender, RoutedEventArgs e)
+        {
+            new StyleExample().Show();
+        }
+
+        private void ThreadUIEXample(object sender, RoutedEventArgs e)
+        {
+           
+            new ThreadUIExample().Show();
+        }
+
+        private void DynamicControls(object sender, RoutedEventArgs e)
+        {
+            new Dynamic.DynamicControls().Show();
+        }
+
+        private void NavigationWindow(object sender, RoutedEventArgs e)
+        {
+            new Navigate.NavigateWindow().Show();
+        }
+
+        private void Templates(object sender, RoutedEventArgs e)
+        {
+            new Window1().Show();
         }
     }
 }

@@ -10,5 +10,14 @@
     <StackPanel>
         <Button Click="Button_Click_UserControls">UC</Button>
         <Button Click="Button_Click_GridwithCheckBox">Grid</Button>
+        <Button Click="StyleExample">Style</Button>
+        <Button Click="ThreadUIEXample">Thread UI</Button>
+
+        <Button Click="DynamicControls">DynamicControls</Button>
+        <Button Click="NavigationWindow">NavigationWindow</Button>
+        <Button Click="Templates">Templates</Button>
+
+
+
     </StackPanel>
 </Window>
