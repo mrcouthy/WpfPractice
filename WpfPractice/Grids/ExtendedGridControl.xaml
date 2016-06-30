@@ -1,6 +1,6 @@
 ﻿<!--Made by Dhiraj Bajracharyra
     mrdhiraj@gmail.com-->
-    <UserControl x:Class="WpfPractice.Grids.ExtendedGridControl"
+<UserControl x:Class="WpfPractice.Grids.ExtendedGridControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,7 +13,9 @@
             <DataGridTemplateColumn.CellTemplate>
                 <DataTemplate>
                     <!--<Image Source="{Binding Column1}" />-->
-                    <Image x:Name="image" Height="30" Source="/WpfPractice;component/Resources/play.png"/>
+                    <Button Click="Button_Click">
+                        <Image x:Name="image" Height="30" Source="/WpfPractice;component/Resources/play.png"/>
+                    </Button>
                 </DataTemplate>
             </DataGridTemplateColumn.CellTemplate>
         </DataGridTemplateColumn>

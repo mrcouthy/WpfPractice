@@ -16,7 +16,7 @@ namespace WpfPractice.Grids
     /// </summary>
     public partial class ExtendedGrid : Window
     {
-        List<UserWithSelecti> users = new List<UserWithSelecti>();
+        List<ObjectWithSelect> users = new List<ObjectWithSelect>();
         public ExtendedGrid()
         {
             InitializeComponent();
@@ -32,7 +32,15 @@ namespace WpfPractice.Grids
             users.Add(c);
             users.Add(a);
             Apple.Datas = users;
+
+            Apple.Row_Clicked += Apple_BoilerEventLog;
            
+        }
+
+        private void Apple_BoilerEventLog(object firer)
+        {
+            Useri user =firer as Useri;
+            MessageBox.Show(user.Name);
         }
 
         private void Getit_Click(object sender, RoutedEventArgs e)
@@ -41,7 +49,7 @@ namespace WpfPractice.Grids
         }
     }
 
-    public class Useri: UserWithSelecti
+    public class Useri: ObjectWithSelect
     {
         public int Id { get; set; }
         public string Name { get; set; }

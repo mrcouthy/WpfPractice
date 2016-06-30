@@ -29,9 +29,9 @@ namespace WpfPractice.Grids
 
         }
 
-        List<UserWithSelecti> _Datas = new List<UserWithSelecti>();
+        List<ObjectWithSelect> _Datas = new List<ObjectWithSelect>();
 
-        public List<UserWithSelecti> Datas
+        public List<ObjectWithSelect> Datas
         {
             get { return _Datas; }
             set
@@ -42,6 +42,7 @@ namespace WpfPractice.Grids
                     item.PropertyChanged += A_PropertyChanged;
                 }
                 ExtGrid.ItemsSource = _Datas;
+             
             }
         }
         long i = 0;
@@ -68,9 +69,9 @@ namespace WpfPractice.Grids
             fromProgram = false;
         }
 
-        internal List<UserWithSelecti> GetSelected()
+        internal List<ObjectWithSelect> GetSelected()
         {
-            var x = (from UserWithSelecti us in Datas
+            var x = (from ObjectWithSelect us in Datas
                      where us.IsSelected
                      select us).ToList();
             return x;
@@ -97,11 +98,19 @@ namespace WpfPractice.Grids
                 }
             }
         }
+        public delegate void SendTheClickedObject(object status);
+        public event SendTheClickedObject Row_Clicked;
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //var button = (FrameworkElement)sender;
+            //User obj = ((FrameworkElement)sender).DataContext as User;
+            Row_Clicked(((FrameworkElement)sender).DataContext);
+        }
     }
 
-   
 
-    public class UserWithSelecti :  INotifyPropertyChanged
+
+    public class ObjectWithSelect :  INotifyPropertyChanged
     {
         
         //caviyar
