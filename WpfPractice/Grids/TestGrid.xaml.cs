@@ -38,7 +38,8 @@ namespace WpfPractice.Grids
             users.Add(a);
             ucCon.dgMain.ItemsSource = users;
             dgTest.ItemsSource = users;
-           
+
+            dataGrid.ItemsSource = users;
         }
         long i = 0;
         bool fromProgram = false;
@@ -84,6 +85,13 @@ namespace WpfPractice.Grids
                     item.IsSelected = false;
                 }
             }
+        }
+
+        private void Button1_Click(object sender, RoutedEventArgs e)
+        {
+            var button = (FrameworkElement)sender;
+            User obj = ((FrameworkElement)sender).DataContext as User;
+            MessageBox.Show("You have clicked " + obj.Name);
         }
     }
 

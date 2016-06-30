@@ -8,6 +8,20 @@
         mc:Ignorable="d"
         Title="TestGrid" Height="300" Width="300">
     <StackPanel>
+        <DataGrid Name="dataGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Binding="{Binding Path=IsSelected}" Header="Select" Width="50" />
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Script" Width="400" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Button1_Click" Content="Get"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox>a</TextBox>
         <controls:UserControl1 x:Name="ucCon" Height="120"/>
         <DataGrid Name="dgTest" AutoGenerateColumns="False"  CanUserResizeColumns="True" CanUserAddRows="False" CanUserSortColumns="True" ItemsSource="{Binding}">
             <DataGrid.Columns>
@@ -25,7 +39,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                
+
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
