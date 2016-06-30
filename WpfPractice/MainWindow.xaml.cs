@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfPractice.Dynamic;
 using WpfPractice.Grids;
 
 namespace WpfPractice
@@ -40,7 +41,7 @@ namespace WpfPractice
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            new ExtendedGrid().Show();
+            new LotDynamic().Show();
         }
 
         private void StyleExample(object sender, RoutedEventArgs e)
@@ -67,6 +68,11 @@ namespace WpfPractice
         private void Templates(object sender, RoutedEventArgs e)
         {
             new Window1().Show();
+        }
+
+        private void ExtendedGrid(object sender, RoutedEventArgs e)
+        {
+            new ExtendedGrid().Show();
         }
     }
 }

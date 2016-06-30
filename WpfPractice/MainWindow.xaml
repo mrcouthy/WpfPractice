@@ -17,7 +17,7 @@
         <Button Click="NavigationWindow">NavigationWindow</Button>
         <Button Click="Templates">Templates</Button>
 
-
+        <Button Click="ExtendedGrid">ExtendedGrid</Button>
 
     </StackPanel>
 </Window>
