@@ -23,7 +23,7 @@ namespace Survey.Questions
     /// </summary>
     public partial class QuestionsContainer : Page
     {
-        NavigationList<Page> pages = new NavigationList<Page>();
+        NavigationList<Page> questionPages = new NavigationList<Page>();
         public QuestionsContainer()
         {
             InitializeComponent();
@@ -69,31 +69,28 @@ namespace Survey.Questions
             List<SurveySection> surveySections = new List<SurveySection>();
             surveySections.Add(ssections);
 
-            pages = new LoadQuestions().GetQuestionsPages(surveySections);
+            questionPages = new LoadQuestions().GetQuestionsPages(surveySections);
 
-            questionArea.Content = pages.Current;
+            questionArea.Content = questionPages.Current;
         }
 
         private void Button_Click_Previous(object sender, RoutedEventArgs e)
         {
-            if (pages.Count > 0)
-                questionArea.Content = pages.MovePrevious;
+            if (questionPages.Count > 0)
+                questionArea.Content = questionPages.MovePrevious;
         }
 
         private void Button_Click_Next(object sender, RoutedEventArgs e)
         {
-            if (pages.Count > 0)
-                questionArea.Content = pages.MoveNext;
+            if (questionPages.Count > 0)
+                questionArea.Content = questionPages.MoveNext;
         }
 
 
 
         private void Button_Click_Home(object sender, RoutedEventArgs e)
         {
-            foreach (var item in pages)
-            {
-
-            }
+            var v = questionPages;
         }
     }
 }

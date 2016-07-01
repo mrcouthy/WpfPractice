@@ -145,8 +145,13 @@ namespace Survey.Questions
             tb.Margin = new Thickness(5);
             tb.Height = 30;
             tb.Width = 150;
+
+            tb.BorderBrush = Brushes.Green;
+            tb.BorderThickness = new Thickness(1, 1, 1, 3);
+
             Grid.SetColumn(tb, column);
             Grid.SetRow(tb, row);
+           
             return tb;
         }
 
@@ -171,8 +176,10 @@ namespace Survey.Questions
         public void AddSingleTextbox(Grid Grid)
         {
             Grid.RowDefinitions.Add(CreateRowDefinition());
-            var Textbox = CreateTextBox(rowCount, 1);
-            Grid.Children.Add(Textbox);
+            var textbox = CreateTextBox(rowCount, 0);
+            
+            Grid.SetColumnSpan(textbox, 2);
+            Grid.Children.Add(textbox);
             rowCount++;
         }
 
