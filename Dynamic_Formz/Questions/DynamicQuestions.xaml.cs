@@ -73,10 +73,6 @@ namespace Survey.Questions
                new ColumnDefinition() { Width = new GridLength(100.0) });
             rootGrid.ColumnDefinitions.Add(
                  new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-            rootGrid.ColumnDefinitions.Add(
-                new ColumnDefinition() { Width = new GridLength(100.0) });
-            rootGrid.ColumnDefinitions.Add(
-                new ColumnDefinition() { Width = new GridLength(100.0) });
             rootGrid.RowDefinitions.Add(CreateRowDefinition());
 
             return rootGrid;
