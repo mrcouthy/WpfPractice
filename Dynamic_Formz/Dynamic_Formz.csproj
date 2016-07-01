@@ -55,12 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Answers\LoadAnswers.cs" />
     <Compile Include="Models\NavigationList.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\QuestionOption.cs" />
     <Compile Include="Models\QuestionType.cs" />
     <Compile Include="Models\QuestionTypes.cs" />
     <Compile Include="Models\SurveySection.cs" />
+    <Compile Include="OtherModels\OtherModels.cs" />
     <Compile Include="Questions\DynamicQuestions.xaml.cs">
       <DependentUpon>DynamicQuestions.xaml</DependentUpon>
     </Compile>
@@ -123,6 +125,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

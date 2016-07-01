@@ -1,4 +1,5 @@
 ﻿
+using Dynamic_Formz.OtherModels;
 using SurveyCore;
 using SurveyCore.Models;
 using System;
@@ -30,38 +31,41 @@ namespace Survey.Questions
         }
 
         private int rowCount = 0;
-        internal void Load(Question question)
+        internal AnswerControls Load(Question question)
         {
+            AnswerControls answerControl = new AnswerControls();
             var questionType = QuestionTypeHelper.GetQuestionType(question.QuestionTypeId);
             var grid = GetGrid();
 
             switch (questionType)
             {
                 case QuestionTypes.SingleTextbox:
-                    AddSingleTextbox(grid);
+
+                    answerControl = AddSingleTextbox(grid, question);
                     break;
                 case QuestionTypes.MultipleTextbox:
-                    AddMultipleTextbox(grid, question);
+                    answerControl = AddMultipleTextbox(grid, question);
                     break;
                 case QuestionTypes.Text:
-                    AddText(grid, question);
+                    answerControl = AddText(grid, question);
                     break;
                 case QuestionTypes.MultipleChoice:
-                    AddMultipleChoice(grid, question);
+                    answerControl = AddMultipleChoice(grid, question);
                     break;
                 case QuestionTypes.Dropdown:
-                    AddDropdown(grid, question);
+                    answerControl = AddDropdown(grid, question);
                     break;
                 case QuestionTypes.MatrixofInput:
-                    AddMatrixofInput(grid, question);
+                    answerControl = AddMatrixofInput(grid, question);
                     break;
                 case QuestionTypes.MatrixofOption:
-                    AddMatrixofOption(grid, question);
+                    answerControl = AddMatrixofOption(grid, question);
                     break;
                 default:
                     break;
             }
             LayoutIt.Children.Add(grid);
+            return answerControl;
         }
 
         #region Privates
@@ -151,7 +155,7 @@ namespace Survey.Questions
 
             Grid.SetColumn(tb, column);
             Grid.SetRow(tb, row);
-           
+
             return tb;
         }
 
@@ -162,7 +166,7 @@ namespace Survey.Questions
             {
                 tb.Items.Add(item);
             }
-           
+
             tb.Margin = new Thickness(5);
             tb.Height = 22;
             tb.Width = 150;
@@ -173,77 +177,120 @@ namespace Survey.Questions
         #endregion
 
 
-        public void AddSingleTextbox(Grid Grid)
+        public AnswerControls AddSingleTextbox(Grid Grid, Question question)
         {
             Grid.RowDefinitions.Add(CreateRowDefinition());
             var textbox = CreateTextBox(rowCount, 0);
-            
+
             Grid.SetColumnSpan(textbox, 2);
             Grid.Children.Add(textbox);
             rowCount++;
+
+            AnswerControls ac = new AnswerControls();
+            ac.QuestionId = question.QuestionId;
+            AnswerOption ao = new AnswerOption();
+            ao.AnswerControl = textbox;
+            ao.QuestionOptionId = null;
+            ao.QuestionId = question.QuestionId;
+            ac.AnswerOptions = new List<AnswerOption>();
+            ac.AnswerOptions.Add(ao);
+
+            return ac;
         }
 
-        public void AddMultipleTextbox(Grid Grid, Question question)
+        public AnswerControls AddMultipleTextbox(Grid Grid, Question question)
         {
+            AnswerControls ac = new AnswerControls();
+            ac.QuestionId = question.QuestionId;
             foreach (var item in question.QuestionOptions)
             {
                 Grid.RowDefinitions.Add(CreateRowDefinition());
                 var Label = CreateTextBlock(item.OptionChoiceLabel, rowCount, 0);
                 Grid.Children.Add(Label);
-                var Textbox = CreateTextBox(rowCount, 1);
-                Grid.Children.Add(Textbox);
+                var textbox = CreateTextBox(rowCount, 1);
+                Grid.Children.Add(textbox);
                 rowCount++;
+
+                AnswerOption ao = new AnswerOption();
+                ao.AnswerControl = textbox;
+                ao.QuestionOptionId = null;
+                ao.QuestionId = question.QuestionId;
+
+                ac.AnswerOptions.Add(ao);
             }
+
+            return ac;
         }
 
-        public void AddText(Grid Grid, Question question)
+        public AnswerControls AddText(Grid Grid, Question question)
         {
             //No need to do any thing as its already taken care
             //Grid.RowDefinitions.Add(CreateRowDefinition());
             //var Textbox = CreateTextBlock(question. ,rowCount, 1);
             //Grid.Children.Add(Textbox);
             //rowCount++;
+            return new AnswerControls();
         }
-        public void AddMultipleChoice(Grid Grid, Question question)
+        public AnswerControls AddMultipleChoice(Grid Grid, Question question)
         {
+            AnswerControls ac = new AnswerControls();
+            ac.QuestionId = question.QuestionId;
             foreach (var item in question.QuestionOptions)
             {
                 Grid.RowDefinitions.Add(CreateRowDefinition());
                 var Label = CreateTextBlock(item.OptionChoiceLabel, rowCount, 0);
                 Grid.Children.Add(Label);
+                Control ctrl;
                 if (question.AllowMultipleChoice)
                 {
-                    var Textbox = CreateCheckBox(rowCount, 1);
-                    Grid.Children.Add(Textbox);
+                    ctrl = CreateCheckBox(rowCount, 1);
+                    Grid.Children.Add(ctrl);
                 }
                 else
                 {
-                    var Textbox = CreateRadioBox(rowCount, 1);
-                    Grid.Children.Add(Textbox);
+                    ctrl = CreateRadioBox(rowCount, 1);
+                    Grid.Children.Add(ctrl);
                 }
                 rowCount++;
+
+                AnswerOption ao = new AnswerOption();
+                ao.AnswerControl = ctrl;
+                ao.QuestionOptionId = null;
+                ao.QuestionId = question.QuestionId;
+
+                ac.AnswerOptions.Add(ao);
             }
+            return ac;
         }
 
         //todo
-        public void AddDropdown(Grid Grid, Question question)
+        public AnswerControls AddDropdown(Grid Grid, Question question)
         {
             Grid.RowDefinitions.Add(CreateRowDefinition());
-            //var Label = CreateTextBlock("drop", rowCount, 0);
-            //Grid.Children.Add(Label);
 
             var texts = (from QuestionOption s in question.QuestionOptions
-                        select s.OptionChoiceLabel).ToList();
-            
-            var Textbox = CreateComboBox(texts,rowCount, 1);
-            Grid.Children.Add(Textbox);
+                         select s.OptionChoiceLabel).ToList();
+
+            var cmb = CreateComboBox(texts, rowCount, 1);
+            Grid.Children.Add(cmb);
             rowCount++;
+
+            AnswerControls ac = new AnswerControls();
+            ac.QuestionId = question.QuestionId;
+            AnswerOption ao = new AnswerOption();
+            ao.AnswerControl = cmb;
+            ao.QuestionOptionId = null;
+            ao.QuestionId = question.QuestionId;
+            ac.AnswerOptions = new List<AnswerOption>();
+            ac.AnswerOptions.Add(ao);
+
+            return ac;
         }
 
-       
+
 
         //todo
-        public void AddMatrixofInput(Grid Grid, Question question)
+        public AnswerControls AddMatrixofInput(Grid Grid, Question question)
         {
             Grid.RowDefinitions.Add(CreateRowDefinition());
             var Label = CreateTextBlock("mat", rowCount, 0);
@@ -251,9 +298,11 @@ namespace Survey.Questions
             var Textbox = CreateTextBox(rowCount, 1);
             Grid.Children.Add(Textbox);
             rowCount++;
+
+            return new AnswerControls();
         }
         //todo
-        public void AddMatrixofOption(Grid Grid, Question question)
+        public AnswerControls AddMatrixofOption(Grid Grid, Question question)
         {
             Grid.RowDefinitions.Add(CreateRowDefinition());
             var Label = CreateTextBlock("mat o", rowCount, 0);
@@ -261,6 +310,8 @@ namespace Survey.Questions
             var Textbox = CreateTextBox(rowCount, 1);
             Grid.Children.Add(Textbox);
             rowCount++;
+
+            return new AnswerControls();
         }
 
 

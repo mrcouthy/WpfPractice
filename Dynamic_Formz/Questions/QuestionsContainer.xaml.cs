@@ -1,4 +1,5 @@
 ﻿
+using Dynamic_Formz.Answers;
 using SurveyCore.Models;
 using System;
 using System.Collections.Generic;
@@ -90,6 +91,8 @@ namespace Survey.Questions
 
         private void Button_Click_Home(object sender, RoutedEventArgs e)
         {
+            var ans = new LoadAnswers();
+            IList<string> a = ans.ReadAnswers(questionPages);
             var v = questionPages;
         }
     }

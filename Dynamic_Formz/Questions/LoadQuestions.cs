@@ -1,4 +1,5 @@
-﻿using SurveyCore;
+﻿using Dynamic_Formz.OtherModels;
+using SurveyCore;
 using SurveyCore.Models;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,10 @@ using Utilities;
 
 namespace Survey.Questions
 {
+
     public class LoadQuestions
     {
+
         public NavigationList<Page> GetQuestionsPages(ICollection<SurveySection> SurveySections)
         {
             NavigationList<Page> pages = new NavigationList<Page>();
@@ -35,18 +38,21 @@ namespace Survey.Questions
             page.Question.Text = question.QuestionText;
             page.CommentLabel.Visibility = page.Comment.Visibility = question.IncludeComment ? Visibility.Visible : Visibility.Hidden;
             var questionOptions = GetAdditionalOptions(question);
-            page.QuestionOptions.Content = questionOptions;
-
-
+            page.QuestionOptions.Content = questionOptions.DynamicQuestion;
             return page;
         }
 
-        public Page GetAdditionalOptions(Question question)
+        public QuestionPage GetAdditionalOptions(Question question)
         {
-
             var dq = new DynamicQuestions();
-            dq.Load(question);
-            return dq;
+            AnswerControls acs = dq.Load(question);
+            return new QuestionPage {AnswerControls=acs,DynamicQuestion=dq };
+        }
+
+        public class QuestionPage
+        {
+            public AnswerControls AnswerControls { get; set; }
+            public Page DynamicQuestion { get; set; }
         }
     }
 }
