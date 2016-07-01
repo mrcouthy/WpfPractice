@@ -66,12 +66,11 @@
     <Compile Include="Questions\DynamicQuestions.xaml.cs">
       <DependentUpon>DynamicQuestions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Questions\LoadQuestions.cs" />
     <Compile Include="Questions\QuestionsContainer.xaml.cs">
       <DependentUpon>QuestionsContainer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Questions\SingleTextBoxQuestionType.xaml.cs">
-      <DependentUpon>SingleTextBoxQuestionType.xaml</DependentUpon>
+    <Compile Include="Questions\SingleQuestion.xaml.cs">
+      <DependentUpon>SingleQuestion.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -93,7 +92,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Questions\SingleTextBoxQuestionType.xaml">
+    <Page Include="Questions\SingleQuestion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

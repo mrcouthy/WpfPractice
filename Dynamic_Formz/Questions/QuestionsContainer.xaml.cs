@@ -24,7 +24,8 @@ namespace Survey.Questions
     /// </summary>
     public partial class QuestionsContainer : Page
     {
-        NavigationList<Page> questionPages = new NavigationList<Page>();
+        public NavigationList<SingleQuestion> QuestionPages { get; set; }
+        
         public QuestionsContainer()
         {
             InitializeComponent();
@@ -70,21 +71,48 @@ namespace Survey.Questions
             List<SurveySection> surveySections = new List<SurveySection>();
             surveySections.Add(ssections);
 
-            questionPages = new LoadQuestions().GetQuestionsPages(surveySections);
+            QuestionPages  = GetQuestionsPages(surveySections);
 
-            questionArea.Content = questionPages.Current;
+            questionArea.Content = QuestionPages.Current;
+        }
+
+        public NavigationList<SingleQuestion> GetQuestionsPages(ICollection<SurveySection> SurveySections)
+        {
+            NavigationList<SingleQuestion> singleQuestions = new NavigationList<SingleQuestion>();
+            foreach (var section in SurveySections)
+            {
+                foreach (var question in section.Questions)
+                {
+                    var page = GetAQuestionPage(question);
+                    singleQuestions.Add(page);
+                }
+            }
+            return singleQuestions;
+        }
+
+        public SingleQuestion GetAQuestionPage(Question question)
+        {
+            var singleQuestionPage = new SingleQuestion();
+            singleQuestionPage.SectionTitle.Header = question.SurveySection.Title;
+            singleQuestionPage.Code.Text = question.Code;
+            singleQuestionPage.Question.Text = question.QuestionText;
+            singleQuestionPage.CommentLabel.Visibility = singleQuestionPage.Comment.Visibility = question.IncludeComment ? Visibility.Visible : Visibility.Hidden;
+            var dq = new DynamicQuestions();
+            dq.Load(question);
+            singleQuestionPage.DynamicQuestions = dq;
+            return singleQuestionPage;
         }
 
         private void Button_Click_Previous(object sender, RoutedEventArgs e)
         {
-            if (questionPages.Count > 0)
-                questionArea.Content = questionPages.MovePrevious;
+            if (QuestionPages.Count > 0)
+                questionArea.Content = QuestionPages.MovePrevious;
         }
 
         private void Button_Click_Next(object sender, RoutedEventArgs e)
         {
-            if (questionPages.Count > 0)
-                questionArea.Content = questionPages.MoveNext;
+            if (QuestionPages.Count > 0)
+                questionArea.Content = QuestionPages.MoveNext;
         }
 
 
@@ -92,8 +120,10 @@ namespace Survey.Questions
         private void Button_Click_Home(object sender, RoutedEventArgs e)
         {
             var ans = new LoadAnswers();
-            IList<string> a = ans.ReadAnswers(questionPages);
-            var v = questionPages;
+            IList<string> a = ans.ReadAnswers(QuestionPages);
+            var v = QuestionPages;
         }
     }
+
+  
 }
