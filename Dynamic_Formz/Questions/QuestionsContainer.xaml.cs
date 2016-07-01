@@ -46,12 +46,14 @@ namespace Survey.Questions
             };
 
             q.Add(
-                new Question() {
-                    QuestionId=1,
-                    Code="Q01",
-                    QuestionTypeId=1,
-                    QuestionText="What is your name",
-                    SurveySection= ssections
+                new Question()
+                {
+                    QuestionId = 1,
+                    Code = "Q01",
+                    QuestionTypeId = 1,
+                    QuestionText = "What is your name",
+                    SurveySection = ssections,
+                    IncludeComment = true
                 }
                 );
             q.Add(

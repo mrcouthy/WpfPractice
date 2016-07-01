@@ -16,27 +16,33 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="2*" />
-                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0">
+                <StackPanel Orientation="Horizontal" Grid.Row="0">
                         <TextBlock FontWeight="Bold" FontSize="11">Code</TextBlock> <TextBlock Name="Code">001</TextBlock>
-            </TextBlock>
+                </StackPanel>
 
+                <StackPanel Grid.Row="1"  Grid.ColumnSpan="2"  >
+                    <TextBlock FontWeight="Bold" FontSize="13.333" Margin="0,5,0,0">
+                        Question
+                    </TextBlock> 
+                    <TextBlock Name="Question" FontSize="12" TextWrapping="Wrap" Grid.ColumnSpan="2">
+                    </TextBlock>        
+                </StackPanel>
 
-                <TextBlock Grid.Row="1"  Grid.ColumnSpan="2" TextWrapping="Wrap" >
-                        <TextBlock FontWeight="Bold" FontSize="13.333" Margin="0,5,0,0">Question</TextBlock> <LineBreak/>
-            <TextBlock Name="Question" FontSize="12" TextWrapping="Wrap" Grid.ColumnSpan="2">
-            </TextBlock>
-            </TextBlock>
                 <Frame Grid.Row="2" Grid.Column="0" Name="QuestionOptions"  NavigationUIVisibility="Hidden" >
                 </Frame>
-                <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" >
-             <TextBlock Name ="CommentLabel" FontWeight="Bold" FontSize="11" VerticalAlignment="Top">Comment</TextBlock> <LineBreak/> 
-            <TextBox Name ="Comment" TextWrapping="Wrap" Height="200" Width="300" HorizontalAlignment="Stretch">
-                </TextBox>
-            </TextBlock>
+
+                <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" >
+                    <TextBlock Name ="CommentLabel" FontWeight="Bold" FontSize="11" VerticalAlignment="Top">
+                        Comment
+                    </TextBlock> 
+                             
+                    <TextBox Name ="Comment" TextWrapping="Wrap" Height="200"  HorizontalAlignment="Stretch">
+                    </TextBox>  
+                </StackPanel>
 
             </Grid>
         </GroupBox>
