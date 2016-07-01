@@ -15,7 +15,7 @@ namespace Dynamic_Formz.Answers
         {
             foreach (var item in questionPages)
             {
-                //item.
+                var ans = ((TextBox)item.DynamicQuestions.AnswerOptions.First().AnswerControl).Text;
             }
             return new List<string>();
         }
