@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Styles\DefaultStyles.xaml.cs">
+      <DependentUpon>DefaultStyles.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Styles\StyleSample.xaml.cs">
       <DependentUpon>StyleSample.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resources\DictionaryWithBrush.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DefaultStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
