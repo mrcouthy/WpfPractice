@@ -33,5 +33,15 @@ namespace Styles_Resources_Templates.Styles
         {
             textBox.Text = string.Empty;
         }
+
+        private void ExitCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

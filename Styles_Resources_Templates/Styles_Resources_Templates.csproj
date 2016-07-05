@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Styles\CustomCommand.cs" />
     <Compile Include="Styles\DefaultStyles.xaml.cs">
       <DependentUpon>DefaultStyles.xaml</DependentUpon>
     </Compile>
