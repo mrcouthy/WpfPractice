@@ -23,5 +23,15 @@ namespace Styles_Resources_Templates.Styles
         {
             InitializeComponent();
         }
+
+        private void NewCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            textBox.Text = string.Empty;
+        }
     }
 }

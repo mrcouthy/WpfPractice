@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:Styles_Resources_Templates.Styles"
         mc:Ignorable="d"
         Title="DefaultStyles" Height="300" Width="300">
+    <Window.CommandBindings>
+        <CommandBinding Command="New" CanExecute="NewCommand_CanExecute" Executed="NewCommand_Executed" />
+    </Window.CommandBindings>
 
-  
-    
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="92*"/>
@@ -20,7 +20,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="59*"/>
             <ColumnDefinition Width="57*"/>
-           
         </Grid.ColumnDefinitions>
 
         <Menu  Grid.Column="1" Height="30">
@@ -38,13 +37,15 @@
                 <MenuItem Header="_Show groups" IsCheckable="True" IsChecked="True" />
             </MenuItem>
         </Menu>
-        
-        
+
+
         <TextBox x:Name="textBox"   
                  TextWrapping="Wrap" Text="TextBox"   Width="120"/>
-        
- 
+
+
         <TextBox x:Name="textBox_Copy1" Grid.Column="1" Grid.Row="1" 
         	TextWrapping="WrapWithOverflow" Text="TextBox"   />
+
+        <Button Command="New" Grid.Column="0" Grid.Row="1">New</Button>
     </Grid>
 </Window>
