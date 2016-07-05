@@ -22,9 +22,21 @@
             <ColumnDefinition Width="57*"/>
            
         </Grid.ColumnDefinitions>
+
+        <Menu  Grid.Column="1" Height="30">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" />
+                <MenuItem Header="_Open" />
+                <MenuItem Header="_Save" />
+                <Separator />
+                <MenuItem Header="_Exit" />
+            </MenuItem>
+        </Menu>
+        
+        
         <TextBox x:Name="textBox"   
                  TextWrapping="Wrap" Text="TextBox"   Width="120"/>
-        <TextBox x:Name="textBox_Copy" Grid.Column="1" 	TextWrapping="NoWrap" Text="TextBox"   Width="120" />
+        
  
         <TextBox x:Name="textBox_Copy1" Grid.Column="1" Grid.Row="1" 
         	TextWrapping="WrapWithOverflow" Text="TextBox"   />
