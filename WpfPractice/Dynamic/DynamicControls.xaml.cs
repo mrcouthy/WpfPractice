@@ -45,7 +45,11 @@ namespace WpfPractice.Dynamic
         }
 
         void button_Click(object sender, RoutedEventArgs e)
-        {
+        {//Check values
+            foreach (var item in LayoutIt.Children)
+            {
+                var x = item;
+            }
             MessageBox.Show("Saved Successfully");
         }
         private Button CreateButton(string text, int row, int column)
@@ -127,10 +131,7 @@ namespace WpfPractice.Dynamic
                new ColumnDefinition() { Width = new GridLength(100.0) });
             rootGrid.ColumnDefinitions.Add(
                  new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-            rootGrid.ColumnDefinitions.Add(
-                new ColumnDefinition() { Width = new GridLength(100.0) });
-            rootGrid.ColumnDefinitions.Add(
-                new ColumnDefinition() { Width = new GridLength(100.0) });
+           
             PropertyInfo[] propertyInfos;
             propertyInfos = typeof(Person).GetProperties();
             rootGrid.RowDefinitions.Add(CreateRowDefinition());
@@ -143,6 +144,8 @@ namespace WpfPractice.Dynamic
                     var Label = CreateTextBlock(propertyInfo.Name, j, 0);
                     rootGrid.Children.Add(Label);
                     var Textbox = CreateTextBox(j, 1);
+
+
                     rootGrid.Children.Add(Textbox);
                     j++;
                 }
@@ -153,6 +156,7 @@ namespace WpfPractice.Dynamic
                     rootGrid.Children.Add(Label);
                     var Textbox = CreateCheckBox(j, 1);
                     rootGrid.Children.Add(Textbox);
+                    
                     j++;
                 }
             }

@@ -41,7 +41,7 @@ namespace WpfPractice
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            new LotDynamic().Show();
+            new DynamicControls().Show();
         }
 
         private void StyleExample(object sender, RoutedEventArgs e)

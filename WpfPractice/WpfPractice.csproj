@@ -63,9 +63,6 @@
     <Compile Include="Dynamic\DynamicControls.xaml.cs">
       <DependentUpon>DynamicControls.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dynamic\LotDynamic.xaml.cs">
-      <DependentUpon>LotDynamic.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Dynamic\Person.cs" />
     <Compile Include="Grids\ExtendedGrid.xaml.cs">
       <DependentUpon>ExtendedGrid.xaml</DependentUpon>
@@ -109,10 +106,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dynamic\DynamicControls.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dynamic\LotDynamic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
