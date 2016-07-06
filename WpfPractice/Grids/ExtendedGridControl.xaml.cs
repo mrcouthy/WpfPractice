@@ -108,8 +108,6 @@ namespace WpfPractice.Grids
         }
     }
 
-
-
     public class ObjectWithSelect :  INotifyPropertyChanged
     {
         
@@ -130,6 +128,45 @@ namespace WpfPractice.Grids
         protected void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+    }
+
+
+    public static class ColumnsFactory
+    {
+        public static DataGridTextColumn GetTextColumn(this ExtendedGridControl extGrid ,string HeaderText, string Binding)
+        {
+            DataGridTextColumn column = new DataGridTextColumn();
+            column.Header = HeaderText;
+            column.Binding = new Binding(Binding);
+            column.IsReadOnly = true;
+            return column;
+        }
+
+        public static DataGridComboBoxColumn GetComboBoxColumn(this ExtendedGridControl extGrid, string HeaderText, string Binding)
+        {
+            DataGridComboBoxColumn column = new DataGridComboBoxColumn();
+            column.Header = HeaderText;
+
+            column.IsReadOnly = true;
+            return column;
+        }
+
+        public static DataGridCheckBoxColumn GetDataGridCheckBoxColumn(this ExtendedGridControl extGrid, string HeaderText, string Binding)
+        {
+            DataGridCheckBoxColumn column = new DataGridCheckBoxColumn();
+            column.Header = HeaderText;
+            column.Binding = new Binding(Binding);
+            column.IsReadOnly = true;
+            return column;
+        }
+
+        public static DataGridTemplateColumn GetDataImageColumn(this ExtendedGridControl extGrid, string HeaderText, string Binding)
+        {
+            DataGridTemplateColumn column = (DataGridTemplateColumn)extGrid.FindResource("dgt");
+            column.Header = HeaderText;
+            column.IsReadOnly = true;
+            return column;
         }
     }
 }
