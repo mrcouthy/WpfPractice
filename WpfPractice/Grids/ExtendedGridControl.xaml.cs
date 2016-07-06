@@ -134,6 +134,36 @@ namespace WpfPractice.Grids
 
     public static class ColumnsFactory
     {
+
+        public static DataGridTextColumn AddTextColumn(this ExtendedGridControl extGrid, string HeaderText, string Binding)
+        {
+            var column = extGrid.GetTextColumn(HeaderText, Binding);
+            extGrid.ExtGrid.Columns.Add(column);
+            return column;
+        }
+
+        public static DataGridComboBoxColumn AddComboBoxColumn(this ExtendedGridControl extGrid, string HeaderText, string Binding)
+        {
+            var column = extGrid.GetComboBoxColumn(HeaderText, Binding);
+            extGrid.ExtGrid.Columns.Add(column);
+            return column;
+        }
+
+        public static DataGridCheckBoxColumn AddDataGridCheckBoxColumn(this ExtendedGridControl extGrid, string HeaderText, string Binding)
+        {
+            var column = extGrid.GetDataGridCheckBoxColumn(HeaderText, Binding);
+            extGrid.ExtGrid.Columns.Add(column);
+            return column;
+        }
+
+        public static DataGridTemplateColumn AddDataImageColumn(this ExtendedGridControl extGrid, string HeaderText, string Binding)
+        {
+            var column = extGrid.GetDataImageColumn(HeaderText, Binding);
+            extGrid.ExtGrid.Columns.Add(column);
+            return column;
+        }
+
+
         public static DataGridTextColumn GetTextColumn(this ExtendedGridControl extGrid ,string HeaderText, string Binding)
         {
             DataGridTextColumn column = new DataGridTextColumn();

@@ -20,10 +20,10 @@ namespace WpfPractice.Grids
         public ExtendedGrid()
         {
             InitializeComponent();
-            var textColumn = Apple.GetTextColumn("Name", "Name");
-            Apple.ExtGrid.Columns.Add(textColumn);
-            Apple.ExtGrid.Columns.Add(Apple.GetTextColumn("Birthday", "Birthday"));
-            Apple.ExtGrid.Columns.Add(Apple.GetDataImageColumn("AAA",""));
+            var textColumn = Apple.AddTextColumn("Name", "Name");
+         
+            Apple.AddTextColumn("Birthday", "Birthday");
+            Apple.AddDataImageColumn("AAA","");
             var a = new Useri() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) };
             var b = new Useri() { Id = 1, Name = "Japan Doe", Birthday = new DateTime(1971, 7, 8) };
             var c = new Useri() { Id = 1, Name = "Amrika Doe", Birthday = new DateTime(1971, 7, 2) };
