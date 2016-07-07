@@ -11,7 +11,7 @@
         <Button Click="Button_Click">Click</Button>
         <Button Click="Button_ChangeClick">Click</Button>
         <Button Click="Button_GetChangeClick">Click</Button>
-        <Grid Margin="50" Name="rootGrid" Loaded="Grid_Loaded" MouseDown="rootGrid_MouseDown">
+        <Grid Margin="50" Name="rootGrid" Loaded="Grid_Loaded">
 
         </Grid>
     </StackPanel>

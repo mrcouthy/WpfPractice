@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WpfPractice.Dynamic
 {
@@ -29,55 +19,18 @@ namespace WpfPractice.Dynamic
                  new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
         }
 
+        public List<Person2> personsList { get; set; }
+        public Person2 selectedPerson { get; set; }
+        Person2 p = new Person2 { Name = "Dhiraj", IsSelected = true, IsGood = true, IsBad = true };
 
-
-
-        #region Private
-
-        private CheckBox CreateCheckBox(int row, int column)
-        {
-            CheckBox tb = new CheckBox();
-            tb.Margin = new Thickness(5);
-            tb.Height = 22;
-            tb.Width = 150;
-            Grid.SetColumn(tb, column);
-            Grid.SetRow(tb, row);
-            return tb;
-        }
-        private RadioButton CreateRadioBox(int row, int column)
-        {
-            RadioButton tb = new RadioButton();
-            tb.Margin = new Thickness(5);
-            tb.Height = 22;
-            tb.Width = 150;
-            Grid.SetColumn(tb, column);
-            Grid.SetRow(tb, row);
-            return tb;
-        }
-        private TextBox CreateTextBox(int row, int column)
-        {
-            TextBox tb = new TextBox();
-            tb.Margin = new Thickness(5);
-            tb.Height = 22;
-            tb.Width = 150;
-            Grid.SetColumn(tb, column);
-            Grid.SetRow(tb, row);
-            return tb;
-        }
-
-        private RowDefinition CreateRowDefinition()
-        {
-            var rowDefinition = new RowDefinition();
-            rowDefinition.Height = GridLength.Auto;
-            // grid.RowDefinitions.Add(rowDefinition);
-            return rowDefinition;
-        }
         int j = 0;
+
         TextBox tb;
         CheckBox cb;
         RadioButton rb;
         RadioButton rb2;
         ComboBox drp;
+
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -88,124 +41,44 @@ namespace WpfPractice.Dynamic
         };
 
             selectedPerson = personsList[2];
-            rootGrid.RowDefinitions.Add(CreateRowDefinition());
-            tb = CreateTextBox(j, 0);
+            rootGrid.RowDefinitions.Add(ControlsFactory.CreateRowDefinition());
+            tb = ControlsFactory.CreateTextBox(j, 0);
             rootGrid.Children.Add(tb);
             j++;
 
-            rootGrid.RowDefinitions.Add(CreateRowDefinition());
-            cb = CreateCheckBox(j, 1);
+            rootGrid.RowDefinitions.Add(ControlsFactory.CreateRowDefinition());
+            cb = ControlsFactory.CreateCheckBox(j, 1);
             rootGrid.Children.Add(cb);
             j++;
 
-            rootGrid.RowDefinitions.Add(CreateRowDefinition());
-            rb = CreateRadioBox(j, 1);
+            rootGrid.RowDefinitions.Add(ControlsFactory.CreateRowDefinition());
+            rb = ControlsFactory.CreateRadioBox(j, 1);
             rootGrid.Children.Add(rb);
             j++;
 
-            rootGrid.RowDefinitions.Add(CreateRowDefinition());
-            rb2 = CreateRadioBox(j, 1);
+            rootGrid.RowDefinitions.Add(ControlsFactory.CreateRowDefinition());
+            rb2 = ControlsFactory.CreateRadioBox(j, 1);
             rootGrid.Children.Add(rb2);
             j++;
 
-            rootGrid.RowDefinitions.Add(CreateRowDefinition());
-            drp = CreateComboBox(j, 1);
+            rootGrid.RowDefinitions.Add(ControlsFactory.CreateRowDefinition());
+            drp = ControlsFactory.CreateComboBox(j, 1);
             drp.DisplayMemberPath = "Name";
 
             rootGrid.Children.Add(drp);
             j++;
-
-
-        }
-
-        private ComboBox CreateComboBox(int row, int column)
-        {
-            ComboBox tb = new ComboBox();
-            tb.Margin = new Thickness(5);
-            tb.Height = 22;
-            tb.Width = 150;
-            Grid.SetColumn(tb, column);
-            Grid.SetRow(tb, row);
-
-           
-
-            return tb;
         }
 
 
-
-
-
-        #endregion
-
-        private void rootGrid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            //binding
-
-
-        }
-
-
-
-        Person2 p = new Person2 { Name = "Dhiraj", IsSelected = true, IsGood = true, IsBad = true };
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            TextBoxBinding("Name", tb, p);
-            CheckBoxBinding("IsSelected", cb, p);
-            RadioButtonBinding("IsGood", rb, p);
-            RadioButtonBinding("IsBad", rb2, p);
+            BindingFactory.TextBoxBinding("Name", tb, p);
+            BindingFactory.CheckBoxBinding("IsSelected", cb, p);
+            BindingFactory.RadioButtonBinding("IsGood", rb, p);
+            BindingFactory.RadioButtonBinding("IsBad", rb2, p);
 
-            CreateDropDownBinding("personsList", "selectedPerson", drp, this);
+            BindingFactory.CreateDropDownBinding("personsList", "selectedPerson", drp, this);
         }
-
-        private void CreateDropDownBinding(string property, string selectedProperty, ComboBox ctrl, object source)
-        {
-            Binding myBinding = new Binding();
-            myBinding.Source = source;
-            myBinding.Path = new PropertyPath(property);
-            myBinding.Mode = BindingMode.TwoWay;
-
-
-            Binding selectedBinding = new Binding();
-            selectedBinding.Source = source;
-            selectedBinding.Path = new PropertyPath(selectedProperty);
-            selectedBinding.Mode = BindingMode.TwoWay;
-
-
-            BindingOperations.SetBinding(ctrl, ComboBox.ItemsSourceProperty, myBinding);
-            BindingOperations.SetBinding(ctrl, ComboBox.SelectedValueProperty, selectedBinding);
-
-        }
-
-
-        private void TextBoxBinding(string property, Control ctrl, object source)
-        {
-            Binding myBinding = new Binding();
-            myBinding.Source = source;
-            myBinding.Path = new PropertyPath(property);
-            myBinding.Mode = BindingMode.TwoWay;
-            BindingOperations.SetBinding(ctrl, TextBox.TextProperty, myBinding);
-        }
-
-        private void CheckBoxBinding(string property, Control ctrl, object source)
-        {
-            Binding myBinding = new Binding();
-            myBinding.Source = source;
-            myBinding.Path = new PropertyPath(property);
-            myBinding.Mode = BindingMode.TwoWay;
-            BindingOperations.SetBinding(ctrl, CheckBox.IsCheckedProperty, myBinding);
-        }
-
-        private void RadioButtonBinding(string property, Control ctrl, object source)
-        {
-            Binding myBinding = new Binding();
-            myBinding.Source = source;
-            myBinding.Path = new PropertyPath(property);
-            myBinding.Mode = BindingMode.TwoWay;
-            BindingOperations.SetBinding(ctrl, RadioButton.IsCheckedProperty, myBinding);
-        }
-
-    
 
         private void Button_ChangeClick(object sender, RoutedEventArgs e)
         {
@@ -217,20 +90,14 @@ namespace WpfPractice.Dynamic
             string selectedperson = selectedPerson.Name;
             string name = p.Name;
         }
-        public List<Person2> personsList { get; set; }
 
-        public Person2 selectedPerson { get; set; }
     }
-    
+
     public class Person2
     {
-        
         public bool IsGood { get; set; }
         public bool IsBad { get; set; }
         public bool IsSelected { get; set; }
         public string Name { get; set; }
-
-        
     }
-
 }

@@ -60,6 +60,8 @@
     <Compile Include="Controls\DropDownMenu.xaml.cs">
       <DependentUpon>DropDownMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dynamic\BindingFactory.cs" />
+    <Compile Include="Dynamic\ControlsFactory.cs" />
     <Compile Include="Dynamic\DynamicBinding.xaml.cs">
       <DependentUpon>DynamicBinding.xaml</DependentUpon>
     </Compile>
