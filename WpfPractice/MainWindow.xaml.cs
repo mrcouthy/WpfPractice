@@ -41,7 +41,7 @@ namespace WpfPractice
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            new DynamicControls().Show();
+            new DynamicBinding().Show();
         }
 
         private void StyleExample(object sender, RoutedEventArgs e)
@@ -73,6 +73,11 @@ namespace WpfPractice
         private void ExtendedGrid(object sender, RoutedEventArgs e)
         {
             new ExtendedGrid().Show();
+        }
+
+        private void DynamicBinding(object sender, RoutedEventArgs e)
+        {
+            new DynamicBinding().Show();
         }
     }
 }

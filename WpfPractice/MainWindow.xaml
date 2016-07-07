@@ -18,6 +18,7 @@
         <Button Click="Templates">Templates</Button>
 
         <Button Click="ExtendedGrid">ExtendedGrid</Button>
+        <Button Click="DynamicBinding">Dynamic Binding</Button>
 
     </StackPanel>
 </Window>
