@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfPractice.Dynamic"
         mc:Ignorable="d"
-        Title="DynamicBinding" Height="300" Width="300">
+        Title="DynamicBinding" Height="413.149" Width="495.156">
 
     <StackPanel>
         <Button Click="Button_Click">Click</Button>
         <Button Click="Button_ChangeClick">Click</Button>
         <Button Click="Button_GetChangeClick">Click</Button>
         <Grid Margin="50" Name="rootGrid" Loaded="Grid_Loaded" MouseDown="rootGrid_MouseDown">
-        
-    </Grid>
+
+        </Grid>
     </StackPanel>
 </Window>

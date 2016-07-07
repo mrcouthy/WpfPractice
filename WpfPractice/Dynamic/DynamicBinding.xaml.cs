@@ -77,9 +77,17 @@ namespace WpfPractice.Dynamic
         CheckBox cb;
         RadioButton rb;
         RadioButton rb2;
+        ComboBox drp;
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
 
+            personsList = new List<Person2> {
+            new Person2 { Name = "Dhiraj", IsSelected = true, IsGood = true, IsBad = false  } ,
+                new Person2 { Name = "Pankaj", IsSelected = false , IsGood = true, IsBad = true } ,
+                new Person2 { Name = "Stark", IsSelected = true, IsGood = false , IsBad = true }
+        };
+
+            selectedPerson = personsList[2];
             rootGrid.RowDefinitions.Add(CreateRowDefinition());
             tb = CreateTextBox(j, 0);
             rootGrid.Children.Add(tb);
@@ -100,7 +108,28 @@ namespace WpfPractice.Dynamic
             rootGrid.Children.Add(rb2);
             j++;
 
+            rootGrid.RowDefinitions.Add(CreateRowDefinition());
+            drp = CreateComboBox(j, 1);
+            drp.DisplayMemberPath = "Name";
 
+            rootGrid.Children.Add(drp);
+            j++;
+
+
+        }
+
+        private ComboBox CreateComboBox(int row, int column)
+        {
+            ComboBox tb = new ComboBox();
+            tb.Margin = new Thickness(5);
+            tb.Height = 22;
+            tb.Width = 150;
+            Grid.SetColumn(tb, column);
+            Grid.SetRow(tb, row);
+
+           
+
+            return tb;
         }
 
 
@@ -115,14 +144,39 @@ namespace WpfPractice.Dynamic
 
 
         }
-        Person2 p = new Person2 { Name = "Dhiraj",IsSelected=true,IsGood =true ,IsBad=true};
+
+
+
+        Person2 p = new Person2 { Name = "Dhiraj", IsSelected = true, IsGood = true, IsBad = true };
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             TextBoxBinding("Name", tb, p);
             CheckBoxBinding("IsSelected", cb, p);
             RadioButtonBinding("IsGood", rb, p);
             RadioButtonBinding("IsBad", rb2, p);
+
+            CreateDropDownBinding("personsList", "selectedPerson", drp, this);
         }
+
+        private void CreateDropDownBinding(string property, string selectedProperty, ComboBox ctrl, object source)
+        {
+            Binding myBinding = new Binding();
+            myBinding.Source = source;
+            myBinding.Path = new PropertyPath(property);
+            myBinding.Mode = BindingMode.TwoWay;
+
+
+            Binding selectedBinding = new Binding();
+            selectedBinding.Source = source;
+            selectedBinding.Path = new PropertyPath(selectedProperty);
+            selectedBinding.Mode = BindingMode.TwoWay;
+
+
+            BindingOperations.SetBinding(ctrl, ComboBox.ItemsSourceProperty, myBinding);
+            BindingOperations.SetBinding(ctrl, ComboBox.SelectedValueProperty, selectedBinding);
+
+        }
+
 
         private void TextBoxBinding(string property, Control ctrl, object source)
         {
@@ -151,6 +205,7 @@ namespace WpfPractice.Dynamic
             BindingOperations.SetBinding(ctrl, RadioButton.IsCheckedProperty, myBinding);
         }
 
+    
 
         private void Button_ChangeClick(object sender, RoutedEventArgs e)
         {
@@ -159,16 +214,23 @@ namespace WpfPractice.Dynamic
 
         private void Button_GetChangeClick(object sender, RoutedEventArgs e)
         {
+            string selectedperson = selectedPerson.Name;
             string name = p.Name;
         }
-    }
+        public List<Person2> personsList { get; set; }
 
+        public Person2 selectedPerson { get; set; }
+    }
+    
     public class Person2
     {
+        
         public bool IsGood { get; set; }
         public bool IsBad { get; set; }
         public bool IsSelected { get; set; }
         public string Name { get; set; }
+
+        
     }
 
 }
