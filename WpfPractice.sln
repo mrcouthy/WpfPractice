@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfPractice", "WpfPractice\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Styles_Resources_Templates", "Styles_Resources_Templates\Styles_Resources_Templates.csproj", "{A06E1E98-5084-4268-A313-06B4DE4002C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGoodStyles", "WpfGoodStyles\WpfGoodStyles.csproj", "{C403DDB9-54FB-4E07-A0D0-9424470C034D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A06E1E98-5084-4268-A313-06B4DE4002C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A06E1E98-5084-4268-A313-06B4DE4002C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A06E1E98-5084-4268-A313-06B4DE4002C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C403DDB9-54FB-4E07-A0D0-9424470C034D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C403DDB9-54FB-4E07-A0D0-9424470C034D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C403DDB9-54FB-4E07-A0D0-9424470C034D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C403DDB9-54FB-4E07-A0D0-9424470C034D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

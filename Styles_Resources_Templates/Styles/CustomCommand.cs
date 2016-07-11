@@ -9,6 +9,7 @@ namespace Styles_Resources_Templates.Styles
 {
     public static class CustomCommands
     {
+         
         public static readonly RoutedUICommand Exit = new RoutedUICommand
                 (
                         "Exit",
