@@ -20,5 +20,6 @@
         <Button Click="ExtendedGrid">ExtendedGrid</Button>
         <Button Click="DynamicBinding">Dynamic Binding</Button>
         <TextBox Name="NumberTextBox" />
+        <Button Click="ProgressBar_Click">Progress bar</Button>
     </StackPanel>
 </Window>

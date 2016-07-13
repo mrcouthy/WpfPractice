@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfPractice.Controls;
 using WpfPractice.Dynamic;
 using WpfPractice.Grids;
 
@@ -96,6 +97,11 @@ namespace WpfPractice
             new DynamicBinding().Show();
         }
 
-
+        private void ProgressBar_Click(object sender, RoutedEventArgs e)
+        {
+            ProgressBarSample p = new ProgressBarSample();
+           
+            p.Show();
+        }
     }
 }

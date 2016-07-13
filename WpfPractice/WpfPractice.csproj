@@ -60,6 +60,9 @@
     <Compile Include="Controls\DropDownMenu.xaml.cs">
       <DependentUpon>DropDownMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ProgressBarSample.xaml.cs">
+      <DependentUpon>ProgressBarSample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dynamic\BindingFactory.cs" />
     <Compile Include="Dynamic\ControlsFactory.cs" />
     <Compile Include="Dynamic\DynamicBinding.xaml.cs">
@@ -106,6 +109,10 @@
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\DropDownMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProgressBarSample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

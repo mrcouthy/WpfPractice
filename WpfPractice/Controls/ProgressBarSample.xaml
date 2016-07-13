@@ -1,0 +1,15 @@
+﻿<Window x:Class="WpfPractice.Controls.ProgressBarSample"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPractice.Controls"
+        mc:Ignorable="d"
+        Title="ProgressBarSample" Height="300" Width="300"
+         ContentRendered="Window_ContentRendered">
+
+    <Grid>
+        <ProgressBar Name ="Mpb" HorizontalAlignment="Left" Height="19" Margin="69,103,0,0" VerticalAlignment="Top" Width="151"/>
+
+    </Grid>
+</Window>
