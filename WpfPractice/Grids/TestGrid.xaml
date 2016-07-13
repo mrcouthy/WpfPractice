@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="TestGrid" Height="300" Width="300">
     <StackPanel>
+        <TextBox Text="{Binding ElementName=dataGrid, Path=Items.Count, Mode=OneWay}"></TextBox>
         <DataGrid Name="dataGrid" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Binding="{Binding Path=IsSelected}" Header="Select" Width="50" />
