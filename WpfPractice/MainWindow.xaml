@@ -19,6 +19,6 @@
 
         <Button Click="ExtendedGrid">ExtendedGrid</Button>
         <Button Click="DynamicBinding">Dynamic Binding</Button>
-
+        <TextBox Name="NumberTextBox" />
     </StackPanel>
 </Window>

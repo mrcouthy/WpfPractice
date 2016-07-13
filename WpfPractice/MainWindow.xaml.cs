@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,6 +26,21 @@ namespace WpfPractice
         public MainWindow()
         {
             InitializeComponent();
+            NumberTextBox.PreviewTextInput += NumberTextBox_PreviewTextInput;
+        }
+
+        private void NumberTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var text = ((TextBox)sender).Text;
+            Regex regex = new Regex(@"^[\p{N}\.]+$");
+            var validnumber = regex.IsMatch(e.Text);
+            
+            if (text.Contains(".") && e.Text ==".")
+            {
+                validnumber = false;
+            }
+            
+            e.Handled = !validnumber;
         }
 
         private void Button_Click_UserControls(object sender, RoutedEventArgs e)
@@ -51,7 +67,7 @@ namespace WpfPractice
 
         private void ThreadUIEXample(object sender, RoutedEventArgs e)
         {
-           
+
             new ThreadUIExample().Show();
         }
 
@@ -79,5 +95,7 @@ namespace WpfPractice
         {
             new DynamicBinding().Show();
         }
+
+
     }
 }
