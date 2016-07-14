@@ -75,6 +75,47 @@ namespace WpfPractice.Dynamic
             return tb;
         }
 
+        public static List<ComboBox> CreateComboBoxMatrix(Grid rootGrid, List<string> rowLables, List<string> colLables)
+        {
+            int row = rowLables.Count;
+            int column = colLables.Count;
+            List<ComboBox> tbs = new List<ComboBox>();
+
+            for (int i = 0; i <= row; i++)
+            {
+                rootGrid.ColumnDefinitions.Add(ControlsFactory.CreateColumnDefinition());
+            }
+            for (int j = 0; j <= column; j++)
+            {
+                rootGrid.RowDefinitions.Add(ControlsFactory.CreateRowDefinition());
+            }
+            int temp = 0;
+
+            for (int i = 1; i <= row; i++)
+            {
+                for (int j = 1; j <= column; j++)
+                {
+                    ComboBox tb = CreateComboBox(i, j);
+                    tbs.Add(tb);
+                    rootGrid.Children.Add(tb);
+                }
+            }
+            foreach (var item in rowLables)
+            {
+                temp++;
+                var l = CreateLabel(temp, 0, item);
+                rootGrid.Children.Add(l);
+            }
+            temp = 0;
+            foreach (var item in colLables)
+            {
+                temp++;
+                var l = CreateLabel(0, temp, item);
+                rootGrid.Children.Add(l);
+            }
+            return tbs;
+        }
+
         public static List<TextBox> CreateTextBoxMatrix(Grid rootGrid, List<string> rowLables, List<string> colLables)
         {
             int row = rowLables.Count;
