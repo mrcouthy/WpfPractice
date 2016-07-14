@@ -9,8 +9,10 @@
     <Window.DataContext>
         <local:ViewModel/>
     </Window.DataContext>
-    <StackPanel Loaded="StackPanel_Loaded">
+    <StackPanel Name="asp" Loaded="StackPanel_Loaded">
+        <Grid Name="aGrid" Height="500" Width="500"></Grid>
         <Button Name="btn" Click="btn_Click">Click Me</Button>
         <DataGrid  Name="adg" ItemsSource="{Binding}"></DataGrid>
+        
     </StackPanel>
 </Window>

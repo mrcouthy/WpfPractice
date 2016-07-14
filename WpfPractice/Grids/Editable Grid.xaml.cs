@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfPractice.Dynamic;
 
 namespace WpfPractice.Grids
 {
@@ -24,7 +25,7 @@ namespace WpfPractice.Grids
         public Editable_Grid()
         {
             InitializeComponent();
-           
+
         }
         public ViewModel ViewModel = new ViewModel();
 
@@ -37,11 +38,23 @@ namespace WpfPractice.Grids
             dt.Rows.Add("1", "2");
             adg.ItemsSource = dt.AsDataView();
 
-           
+
+            // var drp = ControlsFactory.CreateTextBoxMatrix(2,2, aGrid);
+
         }
 
         private void btn_Click(object sender, RoutedEventArgs e)
         {
+            List<string> rl = new List<string>();
+            rl.Add("a");
+            rl.Add("da");
+            rl.Add("asdf");
+            List<string> cl = new List<string>();
+            cl.Add("Ca");
+            cl.Add("Cda");
+            cl.Add("Casdf");
+
+            var drp = ControlsFactory.CreateTextBoxMatrix(aGrid, rl, cl);
             DataTable dtr = ((DataView)adg.ItemsSource).ToTable();
         }
     }
