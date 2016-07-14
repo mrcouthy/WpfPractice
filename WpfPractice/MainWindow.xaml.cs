@@ -58,7 +58,8 @@ namespace WpfPractice
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            new DynamicBinding().Show();
+            Editable_Grid eg = new Editable_Grid();
+            eg.Show();
         }
 
         private void StyleExample(object sender, RoutedEventArgs e)
@@ -102,6 +103,12 @@ namespace WpfPractice
             ProgressBarSample p = new ProgressBarSample();
            
             p.Show();
+        }
+
+        private void DynaGrid(object sender, RoutedEventArgs e)
+        {
+            Editable_Grid eg = new Editable_Grid();
+            eg.Show();
         }
     }
 }

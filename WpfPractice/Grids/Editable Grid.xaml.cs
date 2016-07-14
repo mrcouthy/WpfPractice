@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace WpfPractice.Grids
+{
+    /// <summary>
+    /// Interaction logic for Editable_Grid.xaml
+    /// </summary>
+    public partial class Editable_Grid : Window
+    {
+        public Editable_Grid()
+        {
+            InitializeComponent();
+           
+        }
+        public ViewModel ViewModel = new ViewModel();
+
+        private void StackPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("a");
+            dt.Columns.Add("b");
+            dt.Rows.Add("1", "2");
+            dt.Rows.Add("1", "2");
+            adg.ItemsSource = dt.AsDataView();
+
+           
+        }
+
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            DataTable dtr = ((DataView)adg.ItemsSource).ToTable();
+        }
+    }
+
+
+    public class ViewModel
+    {
+        public ObservableCollection<Example> Values
+        {
+            get;
+            set;
+        }
+    }
+    public class Example
+    {
+        public string A
+        {
+            get;
+            set;
+        }
+        public string B
+        {
+            get;
+            set;
+        }
+    }
+}

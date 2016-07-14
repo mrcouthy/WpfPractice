@@ -72,6 +72,9 @@
       <DependentUpon>DynamicControls.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dynamic\Person.cs" />
+    <Compile Include="Grids\Editable Grid.xaml.cs">
+      <DependentUpon>Editable Grid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Grids\ExtendedGrid.xaml.cs">
       <DependentUpon>ExtendedGrid.xaml</DependentUpon>
     </Compile>
@@ -121,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dynamic\DynamicControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Grids\Editable Grid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

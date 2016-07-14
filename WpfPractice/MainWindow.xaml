@@ -21,5 +21,6 @@
         <Button Click="DynamicBinding">Dynamic Binding</Button>
         <TextBox Name="NumberTextBox" />
         <Button Click="ProgressBar_Click">Progress bar</Button>
+        <Button Click="DynaGrid">Dynamic Grid</Button>
     </StackPanel>
 </Window>
