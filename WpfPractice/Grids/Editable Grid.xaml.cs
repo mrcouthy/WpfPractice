@@ -54,8 +54,9 @@ namespace WpfPractice.Grids
             cl.Add("Cda");
             cl.Add("Casdf");
 
-            var drp = ControlsFactory.CreateComboBoxMatrix(aGrid, rl, cl);
-            DataTable dtr = ((DataView)adg.ItemsSource).ToTable();
+            var drp = ControlsFactory.CreateComboBoxMatrix( rl, cl);
+            matrixContainer.Content = drp;
+                //  DataTable dtr = ((DataView)adg.ItemsSource).ToTable();
         }
     }
 

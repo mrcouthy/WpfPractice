@@ -43,15 +43,15 @@ namespace WpfPractice.Dynamic
             Grid.SetRow(tb, row);
             return tb;
         }
-        public static Label CreateLabel(int row, int column, string label)
+        public static TextBlock CreateLabel(int row, int column, string label)
         {
-            Label tb = new Label();
-            tb.Margin = new Thickness(5);
+            TextBlock tb = new TextBlock();
+           // tb.Margin = new Thickness(5);
             tb.Height = 22;
             tb.Width = 150;
             Grid.SetColumn(tb, column);
             Grid.SetRow(tb, row);
-            tb.Content = label;
+            tb.Text = label;
             return tb;
         }
 
@@ -68,15 +68,16 @@ namespace WpfPractice.Dynamic
         {
             ComboBox tb = new ComboBox();
             tb.Margin = new Thickness(5);
-            tb.Height = 22;
+           // tb.Height = 22;
             tb.Width = 150;
             Grid.SetColumn(tb, column);
             Grid.SetRow(tb, row);
             return tb;
         }
 
-        public static List<ComboBox> CreateComboBoxMatrix(Grid rootGrid, List<string> rowLables, List<string> colLables)
+        public static Grid CreateComboBoxMatrix( List<string> rowLables, List<string> colLables)
         {
+            Grid rootGrid = new Grid();
             int row = rowLables.Count;
             int column = colLables.Count;
             List<ComboBox> tbs = new List<ComboBox>();
@@ -113,7 +114,7 @@ namespace WpfPractice.Dynamic
                 var l = CreateLabel(0, temp, item);
                 rootGrid.Children.Add(l);
             }
-            return tbs;
+            return rootGrid;
         }
 
         public static List<TextBox> CreateTextBoxMatrix(Grid rootGrid, List<string> rowLables, List<string> colLables)

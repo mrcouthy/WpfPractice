@@ -11,6 +11,8 @@
     </Window.DataContext>
     <StackPanel Name="asp" Loaded="StackPanel_Loaded">
         <Grid Name="aGrid" Height="500" Width="500"></Grid>
+        <Frame Name="matrixContainer"></Frame>
+        
         <Button Name="btn" Click="btn_Click">Click Me</Button>
         <DataGrid  Name="adg" ItemsSource="{Binding}"></DataGrid>
         
