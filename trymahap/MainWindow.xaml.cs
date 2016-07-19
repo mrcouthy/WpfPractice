@@ -12,16 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using MahApps.Metro.Controls.Dialogs;
 namespace trymahap
 {
     using System.Threading;
+    using MahApps.Metro.Controls;
     using MahApps.Metro.Controls.Dialogs;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow : MetroWindow
     {
         public MainWindow()
         {
@@ -41,7 +42,7 @@ namespace trymahap
                 MaximumBodyHeight = 100,
                 ColorScheme = MetroDialogOptions.ColorScheme
             };
-
+           
             MessageDialogResult result = await this.ShowMessageAsync("Hello!", "Welcome to the world of metro!" + string.Join(Environment.NewLine, "abc", "def", "ghi", "jkl", "mno", "pqr", "stu", "vwx", "yz"),
                 MessageDialogStyle.AffirmativeAndNegativeAndSingleAuxiliary, mySettings);
 
@@ -74,6 +75,18 @@ namespace trymahap
             
          int a=   await ALongProccess();
             isLoading = false;
+        }
+
+        private async void ButtonBase1_OntestClick(object sender, RoutedEventArgs e)
+        {
+          var controller = await this.ShowProgressAsync("Please wait...", "Progress message");
+        }
+
+        private async void ButtonBase3_OntestClick(object sender, RoutedEventArgs e)
+        {
+          var dialog =new Window1();
+
+            await this.ShowMetroDialogAsync(dialog);
         }
     }
 }
