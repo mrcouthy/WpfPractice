@@ -6,8 +6,8 @@
     <StackPanel>
         <Button Click="ButtonBase_OnClick">okok</Button>
         <Button Click="ButtonBase1_OnClick">now do long process</Button>
-        <Button Click="ButtonBase1_OntestClick">test</Button>
-        <Button Click="ButtonBase3_OntestClick">test</Button>
+        <Button Click="ButtonBase1_OntestClick">On Progress</Button>
+        <Button Click="ButtonBase3_OntestClick">Custom Dialog</Button>
         <!--<Controls:ProgressRing Grid.Column="1"
                                        Width="40"
                                        Height="40" />

@@ -42,7 +42,7 @@ namespace trymahap
                 MaximumBodyHeight = 100,
                 ColorScheme = MetroDialogOptions.ColorScheme
             };
-           
+
             MessageDialogResult result = await this.ShowMessageAsync("Hello!", "Welcome to the world of metro!" + string.Join(Environment.NewLine, "abc", "def", "ghi", "jkl", "mno", "pqr", "stu", "vwx", "yz"),
                 MessageDialogStyle.AffirmativeAndNegativeAndSingleAuxiliary, mySettings);
 
@@ -67,24 +67,60 @@ namespace trymahap
             isLoading = true;
             Thread.Sleep(9000);
             MessageBox.Show("ola");
-            return 1 ;
+            return 1;
         }
 
         private async void ButtonBase1_OnClick(object sender, RoutedEventArgs e)
         {
-            
-         int a=   await ALongProccess();
-            isLoading = false;
+            var mySettings = new MetroDialogSettings()
+            {
+                NegativeButtonText = "Close now",
+                AnimateShow = false,
+                AnimateHide = false
+            };
+
+            var controller = await this.ShowProgressAsync("Please wait...", "We are baking some cupcakes!", settings: mySettings);
+            controller.SetIndeterminate();
+
+            await TaskEx.Delay(5000);
+
+            controller.SetCancelable(true);
+
+            double i = 0.0;
+            while (i < 6.0)
+            {
+                double val = (i / 100.0) * 20.0;
+                controller.SetProgress(val);
+                controller.SetMessage("Baking cupcake: " + i + "...");
+
+                if (controller.IsCanceled)
+                    break; //canceled progressdialog auto closes.
+
+                i += 1.0;
+
+                await TaskEx.Delay(2000);
+            }
+
+            await controller.CloseAsync();
+
+            if (controller.IsCanceled)
+            {
+                await this.ShowMessageAsync("No cupcakes!", "You stopped baking!");
+            }
+            else
+            {
+                await this.ShowMessageAsync("Cupcakes!", "Your cupcakes are finished! Enjoy!");
+            }
         }
 
         private async void ButtonBase1_OntestClick(object sender, RoutedEventArgs e)
         {
-          var controller = await this.ShowProgressAsync("Please wait...", "Progress message");
+            var controller = await this.ShowProgressAsync("Please wait...", "Progress message");
         }
 
         private async void ButtonBase3_OntestClick(object sender, RoutedEventArgs e)
         {
-          var dialog =new Window1();
+            var dialog = new Window1();
 
             await this.ShowMetroDialogAsync(dialog);
         }
