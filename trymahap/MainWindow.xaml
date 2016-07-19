@@ -1,0 +1,30 @@
+﻿<Controls:MetroWindow x:Class="trymahap.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <Button Click="ButtonBase_OnClick">okok</Button>
+        <Button Click="ButtonBase1_OnClick">now do long process</Button>
+
+        <!--<Controls:ProgressRing Grid.Column="1"
+                                       Width="40"
+                                       Height="40" />
+        <Controls:ProgressRing Grid.Column="2"
+                                       Width="20"
+                                       Height="20" />-->
+        <Controls:MetroProgressBar 
+            Name="LoadingSymbol"
+            Width="200"
+                                       Margin="0, 10, 0, 0"
+                                       Foreground="{DynamicResource AccentColorBrush}"
+                                       Maximum="100"
+                                       Minimum="0"
+                                       Value="51" 
+                                   IsIndeterminate="True"
+                                   
+                                   />
+        
+        <TextBlock Text="{Binding isLoading}"></TextBlock>
+    </StackPanel>
+</Controls:MetroWindow>
