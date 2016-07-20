@@ -117,7 +117,11 @@ namespace trymahap
         private async void ButtonBackgorungWorker_OntestClick(object sender, RoutedEventArgs e)
         {
             var dialog = new BackGroundWorkingDialog { };
-            dialog.Processor = new AboveIt() {Processor = new SlowProcessor(50)};
+            dialog.Processor = new AboveIt()
+            {
+                Processor = new SlowProcessor(50),
+                TotalIterations = 50
+            };
             dialog.Show();
         }
 

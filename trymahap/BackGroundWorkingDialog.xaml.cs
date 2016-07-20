@@ -26,7 +26,7 @@ namespace trymahap
        
     
         private BackgroundWorker backgroundWorker;
-        int _iterations = 50;
+        int _iterations = 0;
         private AboveIt _processor;
         //private int iterations = 50;
         public AboveIt Processor
@@ -35,7 +35,7 @@ namespace trymahap
             set
             {
                 _processor = value;
-                
+                _iterations = value.TotalIterations;
             }
         } 
      
