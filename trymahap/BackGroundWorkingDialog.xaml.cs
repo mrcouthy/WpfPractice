@@ -26,19 +26,21 @@ namespace trymahap
        
     
         private BackgroundWorker backgroundWorker;
-
+        int _iterations = 50;
+        private AboveIt _processor;
         //private int iterations = 50;
-        private IEnumerable<int> _processor;
-        public IEnumerable<int> Processor
+        public AboveIt Processor
         {
             get { return _processor; }
             set
             {
-                _processor = value; 
+                _processor = value;
                 
             }
-        }
+        } 
+     
 
+     
         public BackGroundWorkingDialog()
         {
             InitializeComponent();
@@ -62,21 +64,20 @@ namespace trymahap
             backgroundWorker.WorkerSupportsCancellation = true;
 
         }
-
+      
         // Runs on UI Thread
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            int iterations = 0;
+           
 
-            if (int.TryParse(InputTextBox.Text, out iterations))
-            {
+             
                 if (!backgroundWorker.IsBusy)
-                    backgroundWorker.RunWorkerAsync(iterations);
+                    backgroundWorker.RunWorkerAsync(_iterations);
 
                 StartButton.IsEnabled = !backgroundWorker.IsBusy;
                 CancelButton.IsEnabled = backgroundWorker.IsBusy;
                 OutputTextBox.Text = string.Empty;
-            }
+             
         }
 
         // Runs on UI Thread
@@ -96,7 +97,7 @@ namespace trymahap
             int result = 0;
             int iterations = (int)e.Argument;
 
-            foreach (var current in _processor)
+            foreach (var current in Processor.Processor)
             {
                 if (worker.CancellationPending)
                 {

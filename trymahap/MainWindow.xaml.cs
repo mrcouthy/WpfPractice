@@ -117,7 +117,7 @@ namespace trymahap
         private async void ButtonBackgorungWorker_OntestClick(object sender, RoutedEventArgs e)
         {
             var dialog = new BackGroundWorkingDialog { };
-            dialog.Processor = new SlowProcessor(50);
+            dialog.Processor = new AboveIt() {Processor = new SlowProcessor(50)};
             dialog.Show();
         }
 
@@ -128,12 +128,19 @@ namespace trymahap
         }
     }
 
-  
+    public class AboveIt
+
+    {
+        public IEnumerable<int> Processor { get; set; }
+        public int TotalIterations { get; set; }
+    }
+
+    
 
     public class SlowProcessor : IEnumerable<int>
     {
         private int currentPosition;
-        private int totalIterations;
+        public int totalIterations;
 
         public SlowProcessor(int iterations)
         {

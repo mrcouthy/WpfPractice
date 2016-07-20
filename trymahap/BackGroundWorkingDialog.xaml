@@ -20,12 +20,7 @@
                        Text="Iterations: "
                        />
 
-            <TextBox Grid.Row="0" Grid.Column="1"
-                     Name="InputTextBox"
-                     Text="50"
-                     />
-
-            <!-- Progress Section -->
+        <!-- Progress Section -->
             <ProgressBar Grid.Row="1" Grid.ColumnSpan="2"
                          Name="MainProgressBar"
                          VerticalAlignment="Center" Height="20" />
