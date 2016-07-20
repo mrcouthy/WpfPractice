@@ -31,7 +31,7 @@ namespace trymahap
             isLoading = false;
         }
 
-        private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private async void ButtonMahDialogOnClick(object sender, RoutedEventArgs e)
         {
             isLoading = true;
             var mySettings = new MetroDialogSettings()
@@ -70,7 +70,7 @@ namespace trymahap
             return 1;
         }
 
-        private async void ButtonBase1_OnClick(object sender, RoutedEventArgs e)
+        private async void ButtonLongProcess_OnClick(object sender, RoutedEventArgs e)
         {
             var mySettings = new MetroDialogSettings()
             {
@@ -113,16 +113,26 @@ namespace trymahap
             }
         }
 
-        private async void ButtonBase1_OntestClick(object sender, RoutedEventArgs e)
+        private async void ButtonBackgorungWorker_OntestClick(object sender, RoutedEventArgs e)
         {
-            var controller = await this.ShowProgressAsync("Please wait...", "Progress message");
+            var dialog = new BackGroundWorkingDialog();
+            
+            dialog.Show();
         }
 
-        private async void ButtonBase3_OntestClick(object sender, RoutedEventArgs e)
+        private async void ButtonCustomDialog_OntestClick(object sender, RoutedEventArgs e)
         {
             var dialog = new Window1();
 
             await this.ShowMetroDialogAsync(dialog);
+        }
+    }
+
+    public class UploadWorker
+    {
+        public void Upload()
+        {
+            Thread.Sleep(500);
         }
     }
 }

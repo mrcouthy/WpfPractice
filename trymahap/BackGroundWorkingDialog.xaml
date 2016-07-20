@@ -1,0 +1,56 @@
+﻿<Window x:Class="trymahap.BackGroundWorkingDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BackGroundWorkingDialog" Height="300" Width="300">
+    
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Input Section -->
+            <TextBlock Grid.Row="0" Grid.Column="0"
+                       Text="Iterations: "
+                       />
+
+            <TextBox Grid.Row="0" Grid.Column="1"
+                     Name="InputTextBox"
+                     Text="50"
+                     />
+
+            <!-- Progress Section -->
+            <ProgressBar Grid.Row="1" Grid.ColumnSpan="2"
+                         Name="MainProgressBar"
+                         VerticalAlignment="Center" Height="20" />
+
+            <!-- Output Section -->
+            <TextBlock Grid.Row="2" Grid.Column="0"
+                       Text="Output: "
+                        />
+
+            <TextBox Grid.Row="2" Grid.Column="1"
+                     Name="OutputTextBox"
+                    />
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="3" Grid.ColumnSpan="2"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <Button Name="StartButton" Content="Start"
+                        
+                        Click="StartButton_Click"/>
+                <Button Name="CancelButton" Content="Cancel" 
+                      
+                        IsEnabled="False"
+                        Click="CancelButton_Click"/>
+            </StackPanel>
+        </Grid>
+     
+</Window>
