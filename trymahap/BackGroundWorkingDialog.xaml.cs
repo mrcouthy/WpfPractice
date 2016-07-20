@@ -23,7 +23,21 @@ namespace trymahap
     /// </summary>
     public partial class BackGroundWorkingDialog : Window
     {
+       
+    
         private BackgroundWorker backgroundWorker;
+
+        //private int iterations = 50;
+        private IEnumerable<int> _processor;
+        public IEnumerable<int> Processor
+        {
+            get { return _processor; }
+            set
+            {
+                _processor = value; 
+                
+            }
+        }
 
         public BackGroundWorkingDialog()
         {
@@ -71,6 +85,7 @@ namespace trymahap
             backgroundWorker.CancelAsync();
         }
 
+     
         // Runs on Background Thread
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -81,8 +96,7 @@ namespace trymahap
             int result = 0;
             int iterations = (int)e.Argument;
 
-            SlowProcessor processor = new SlowProcessor(iterations);
-            foreach (var current in processor)
+            foreach (var current in _processor)
             {
                 if (worker.CancellationPending)
                 {
@@ -133,30 +147,5 @@ namespace trymahap
         }
     }
 
-    public class SlowProcessor : IEnumerable<int>
-    {
-        private int currentPosition;
-        private int totalIterations;
-
-        public SlowProcessor(int iterations)
-        {
-            totalIterations = iterations;
-        }
-
-        public IEnumerator<int> GetEnumerator()
-        {
-            currentPosition = 0;
-            while (currentPosition < totalIterations)
-            {
-                Thread.Sleep(100);
-                currentPosition++;
-                yield return currentPosition;
-            }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
-    }
+    
 }

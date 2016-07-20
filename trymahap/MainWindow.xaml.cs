@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls.Dialogs;
 namespace trymahap
 {
+    using System.Collections;
     using System.Threading;
     using MahApps.Metro.Controls;
     using MahApps.Metro.Controls.Dialogs;
@@ -115,24 +116,45 @@ namespace trymahap
 
         private async void ButtonBackgorungWorker_OntestClick(object sender, RoutedEventArgs e)
         {
-            var dialog = new BackGroundWorkingDialog();
-            
+            var dialog = new BackGroundWorkingDialog { };
+            dialog.Processor = new SlowProcessor(50);
             dialog.Show();
         }
 
         private async void ButtonCustomDialog_OntestClick(object sender, RoutedEventArgs e)
         {
             var dialog = new Window1();
-
             await this.ShowMetroDialogAsync(dialog);
         }
     }
 
-    public class UploadWorker
+  
+
+    public class SlowProcessor : IEnumerable<int>
     {
-        public void Upload()
+        private int currentPosition;
+        private int totalIterations;
+
+        public SlowProcessor(int iterations)
         {
-            Thread.Sleep(500);
+            totalIterations = iterations;
+        }
+
+        public IEnumerator<int> GetEnumerator()
+        {
+            currentPosition = 0;
+            while (currentPosition < totalIterations)
+            {
+                Thread.Sleep(100);
+                currentPosition++;
+                yield return currentPosition;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
+   
 }
