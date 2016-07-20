@@ -27,9 +27,9 @@ namespace trymahap
     
         private BackgroundWorker backgroundWorker;
         int _iterations = 0;
-        private AboveIt _processor;
+        private IAboveIt _processor;
         //private int iterations = 50;
-        public AboveIt Processor
+        public IAboveIt Processor
         {
             get { return _processor; }
             set
@@ -148,5 +148,10 @@ namespace trymahap
         }
     }
 
-    
+    public interface IAboveIt
+    {
+        IEnumerable<int> Processor { get; set; }
+        int TotalIterations { get; set; }
+    }
+
 }

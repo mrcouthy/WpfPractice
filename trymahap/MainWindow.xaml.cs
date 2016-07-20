@@ -114,6 +114,14 @@ namespace trymahap
             }
         }
 
+       
+
+        private async void ButtonCustomDialog_OntestClick(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Window1();
+            await this.ShowMetroDialogAsync(dialog);
+        }
+
         private async void ButtonBackgorungWorker_OntestClick(object sender, RoutedEventArgs e)
         {
             var dialog = new BackGroundWorkingDialog { };
@@ -124,27 +132,20 @@ namespace trymahap
             };
             dialog.Show();
         }
-
-        private async void ButtonCustomDialog_OntestClick(object sender, RoutedEventArgs e)
-        {
-            var dialog = new Window1();
-            await this.ShowMetroDialogAsync(dialog);
-        }
     }
 
-    public class AboveIt
+    public class AboveIt:IAboveIt
 
     {
         public IEnumerable<int> Processor { get; set; }
         public int TotalIterations { get; set; }
     }
 
-    
-
+   
     public class SlowProcessor : IEnumerable<int>
     {
         private int currentPosition;
-        public int totalIterations;
+        private int totalIterations;
 
         public SlowProcessor(int iterations)
         {
