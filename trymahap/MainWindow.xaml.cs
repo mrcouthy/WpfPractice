@@ -16,9 +16,12 @@ using MahApps.Metro.Controls.Dialogs;
 namespace trymahap
 {
     using System.Collections;
+    using System.ComponentModel;
     using System.Threading;
     using MahApps.Metro.Controls;
     using MahApps.Metro.Controls.Dialogs;
+    using System.Globalization;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -31,6 +34,9 @@ namespace trymahap
             DataContext = this;
             isLoading = false;
         }
+
+     
+        public string HomePhone { get; set; }
 
         private async void ButtonMahDialogOnClick(object sender, RoutedEventArgs e)
         {
@@ -167,6 +173,26 @@ namespace trymahap
         {
             return this.GetEnumerator();
         }
+    }
+
+
+    public class RegexValidationRule : ValidationRule
+    {
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            if (Expression == null)
+                return ValidationResult.ValidResult;
+
+            Regex m_RegEx = new Regex(Expression);
+            Match match = m_RegEx.Match(value.ToString());
+            if (match == null || match == Match.Empty)
+                return new ValidationResult(false, "Invalid input format");
+            else
+                return ValidationResult.ValidResult;
+        }
+
+        public string Expression { get; set; }
+
     }
    
 }

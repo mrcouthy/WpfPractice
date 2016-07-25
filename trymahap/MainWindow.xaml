@@ -3,7 +3,63 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
            xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
            xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+           xmlns:trymahap="clr-namespace:trymahap"
+                      
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
            Title="MainWindow" Height="350" Width="525">
+
+    <Window.Resources>
+
+        <Style x:Key="ErrorStyle"
+               TargetType="FrameworkElement">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError"
+                         Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <ControlTemplate x:Key="TextBoxErrorTemplate">
+            <DockPanel>
+                <Ellipse DockPanel.Dock="Right"
+                         Margin="2,0"
+                         ToolTip="Contains invalid data"
+                         Width="10"
+                         Height="10">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#11FF1111"
+                                          Offset="0" />
+                            <GradientStop Color="#FFFF0000"
+                                          Offset="1" />
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <AdornedElementPlaceholder />
+            </DockPanel>
+        </ControlTemplate>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin"
+                    Value="4,4,15,4" />
+            <Setter Property="Validation.ErrorTemplate"
+                    Value="{StaticResource TextBoxErrorTemplate}" />
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError"
+                         Value="True">
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <Binding Path="(Validation.Errors).CurrentItem.ErrorContent"
+                                     RelativeSource="{x:Static RelativeSource.Self}" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+
     <StackPanel>
 
         <TextBlock Grid.Column="1" Text="&#xf042;" 
@@ -25,6 +81,31 @@
         <Button Click="ButtonLongProcess_OnClick">now do long process</Button>
         <Button Click="ButtonBackgorungWorker_OntestClick">On BackgroundWorker</Button>
         <fa:IconImage Icon="Ambulance" Foreground="Red" Width="24" Height="24"/>
+
+        <TextBox x:Name="homePhoneTextBox"
+                     Width="120"
+                     VerticalAlignment="Center"
+                   
+                     Grid.Row="0"
+                     Margin="3"
+                     Height="23"
+                     HorizontalAlignment="Left"
+                     Grid.Column="1" >
+
+            <TextBox.Text>
+                <Binding Path="HomePhone">
+                    <Binding.ValidationRules>
+                        <trymahap:RegexValidationRule Expression="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+
+        </TextBox>
+
+
+        <!--Text="{Binding WorkPhone, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}"-->
+        
+        
         <!--<Controls:ProgressRing Grid.Column="1"
                                        Width="40"
                                        Height="40" />
