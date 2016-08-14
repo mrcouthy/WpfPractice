@@ -100,6 +100,22 @@ namespace WpfPractice.Grids
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
+
+        public static List<User> GetTestData(int noOfAdditionalRows=0)
+        {
+            List<User> users = new List<User>();
+            var a = new User() { Id = 1, Name = "John Doe", Birthday = new DateTime(1971, 7, 23) };
+            var b = new User() { Id = 1, Name = "Japan Doe", Birthday = new DateTime(1971, 7, 8) };
+            var c = new User() { Id = 1, Name = "Amrika Doe", Birthday = new DateTime(1971, 7, 2) };
+            users.Add(b);
+            users.Add(c);
+            users.Add(a);
+            for (int i = 0; i < noOfAdditionalRows; i++)
+            {
+                users.Add(c);
+            }
+            return users;
+        }
     }
 
     public class UserWithSelect : User, INotifyPropertyChanged

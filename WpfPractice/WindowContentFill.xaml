@@ -1,0 +1,31 @@
+﻿<Window x:Class="WpfPractice.WindowContentFill"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPractice"
+        mc:Ignorable="d"
+        Title="WindowContentFill" Height="300" Width="300" Loaded="Window_Loaded">
+    <DockPanel LastChildFill="True">
+        
+        <StackPanel Background="Purple" DockPanel.Dock="Right" Orientation="Horizontal">
+            <Button>Right</Button>
+        </StackPanel>
+        <StackPanel Background="RoyalBlue" DockPanel.Dock="Top" Orientation="Horizontal">
+            <TextBlock>Top</TextBlock>
+            <TextBlock>Top</TextBlock>
+            <TextBlock>Top</TextBlock>
+            <TextBlock>Top</TextBlock>
+        </StackPanel>
+        <StackPanel Background="Plum" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TextBox>Bottom</TextBox>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Left" Background="Red" >
+            <TextBox>Fill</TextBox>
+        </StackPanel>
+        <Grid Background="AliceBlue"   >
+            <DataGrid Name="dgrid"    VerticalScrollBarVisibility="Visible" AlternationCount="5" AlternatingRowBackground="Bisque">
+            </DataGrid>
+        </Grid>
+    </DockPanel>
+</Window>
